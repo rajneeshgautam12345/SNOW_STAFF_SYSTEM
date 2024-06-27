@@ -15,7 +15,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(plugin = { "pretty", "html:target/cucumber.html", "html:target/site/serenity/index.html",
 		"json:target/jira-xray-data.json", "json:targets/sanity.json", "json:target/cucumber-report.json",
 		"usage:target/site/serenity/cucumber-usage.json" }, 
-features = "src/test/resources/features", tags = "@DIA_Colorless")
+features = "src/test/resources/features", tags = "@DIA_Colorless1")
 public class CukesTest {
 	/*
 	 * COMMENTS ARE ADDED TO BELOW MENTIONED CLASSES IN TESTS PROJECTS FOR BETTER
