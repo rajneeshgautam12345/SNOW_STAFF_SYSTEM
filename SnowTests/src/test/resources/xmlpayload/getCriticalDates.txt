@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="urn:level3/enterprise/commondata/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:GetOrderCriticalDates>
+         <context>
+            <source>BPMPortal</source>
+            <transactionId>BPMPortal-aa53648</transactionId>
+            <version>v1_0</version>
+         </context>
+         <GetCOOrderCriticalDates>
+            <serviceOrderContext>
+               <serviceOrderID>552687619-343126918</serviceOrderID>
+               <serviceOrderVersion>1</serviceOrderVersion>
+            </serviceOrderContext>
+         </GetCOOrderCriticalDates>
+      </v1:GetOrderCriticalDates>
+   </soapenv:Body>
+</soapenv:Envelope>

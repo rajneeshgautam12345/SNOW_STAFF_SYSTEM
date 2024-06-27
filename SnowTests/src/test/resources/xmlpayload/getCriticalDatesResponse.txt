@@ -1,0 +1,259 @@
+{
+  "soap:Envelope" : {
+    "xmlns:xsd" : "http://www.w3.org/2001/XMLSchema",
+    "xmlns:soap" : "http://schemas.xmlsoap.org/soap/envelope/",
+    "xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "soap:Body" : {
+      "GetOrderCriticalDatesResponse" : {
+        "xmlns" : "urn:level3/enterprise/commondata/v1",
+        "isError" : false,
+        "context" : {
+          "xmlns" : "",
+          "source" : {
+            "xmlns" : "",
+            "content" : "BPMPortal"
+          },
+          "transactionId" : {
+            "xmlns" : "",
+            "content" : "BPMPortal-aa53648"
+          },
+          "parentTransactionId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          }
+        },
+        "COOrderCriticalDates" : {
+          "productFamily" : {
+            "xmlns" : "",
+            "content" : "HC_UCPE"
+          },
+          "xmlns" : "",
+          "criticalDates" : {
+            "revisedCommitDate" : {
+              "date" : {
+                "date" : {
+                  "xmlns" : "",
+                  "content" : "2022-07-24T00:00:00.000Z"
+                },
+                "xmlns" : ""
+              },
+              "xmlns" : "",
+              "isEditable" : {
+                "xmlns" : "",
+                "content" : true
+              }
+            },
+            "extDateContextKey" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "dateContextType" : {
+              "xmlns" : "",
+              "content" : "ORDER"
+            },
+            "submitDate" : {
+              "date" : {
+                "date" : {
+                  "xmlns" : "",
+                  "content" : "2022-07-19T11:22:17.000Z"
+                },
+                "xmlns" : ""
+              },
+              "xmlns" : ""
+            },
+            "suggestedCCDDate" : {
+              "date" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "xmlns" : ""
+            },
+            "rejectReasonCode" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "commitDate" : {
+              "date" : {
+                "date" : {
+                  "xmlns" : "",
+                  "content" : "2022-08-09T00:00:00.000Z"
+                },
+                "xmlns" : ""
+              },
+              "xmlns" : ""
+            },
+            "verbalCommitDate" : {
+              "date" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "xmlns" : ""
+            },
+            "completeDate" : {
+              "date" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "xmlns" : ""
+            },
+            "xmlns" : "",
+            "requestDate" : {
+              "date" : {
+                "date" : {
+                  "xmlns" : "",
+                  "content" : "2022-07-28T06:00:00.000Z"
+                },
+                "xmlns" : ""
+              },
+              "xmlns" : ""
+            },
+            "dateContextKey" : {
+              "xmlns" : "",
+              "content" : 40133039
+            },
+            "authorizeDate" : {
+              "date" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "xmlns" : "",
+              "isEditable" : {
+                "xmlns" : "",
+                "content" : true
+              }
+            },
+            "receivedDate" : {
+              "date" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "xmlns" : ""
+            }
+          },
+          "serviceOrderVersion" : {
+            "xmlns" : "",
+            "content" : 1
+          },
+          "productComponentName" : {
+            "xmlns" : "",
+            "content" : "Adaptive Virtual Services Premises"
+          },
+          "sourceSystem" : {
+            "xmlns" : "",
+            "content" : "PIPELINE"
+          },
+          "productOrderCriticalDates" : {
+            "xmlns" : "",
+            "criticalDates" : {
+              "revisedCommitDate" : {
+                "date" : {
+                  "date" : {
+                    "xmlns" : "",
+                    "content" : "2022-07-24T00:00:00.000Z"
+                  },
+                  "xmlns" : ""
+                },
+                "xmlns" : "",
+                "isEditable" : {
+                  "xmlns" : "",
+                  "content" : false
+                }
+              },
+              "xmlns" : "",
+              "extDateContextKey" : {
+                "xmlns" : "",
+                "xsi:nil" : true
+              },
+              "dateContextType" : {
+                "xmlns" : "",
+                "content" : "PRODUCT"
+              },
+              "submitDate" : {
+                "date" : {
+                  "date" : {
+                    "xmlns" : "",
+                    "content" : "2022-07-19T11:22:17.000Z"
+                  },
+                  "xmlns" : ""
+                },
+                "xmlns" : ""
+              },
+              "requestDate" : {
+                "date" : {
+                  "date" : {
+                    "xmlns" : "",
+                    "content" : "2022-07-19T11:18:52.000Z"
+                  },
+                  "xmlns" : ""
+                },
+                "xmlns" : ""
+              },
+              "dateContextKey" : {
+                "xmlns" : "",
+                "content" : 40133036
+              },
+              "authorizeDate" : {
+                "date" : {
+                  "xmlns" : "",
+                  "xsi:nil" : true
+                },
+                "xmlns" : ""
+              },
+              "receivedDate" : {
+                "date" : {
+                  "xmlns" : "",
+                  "xsi:nil" : true
+                },
+                "xmlns" : ""
+              },
+              "commitDate" : {
+                "date" : {
+                  "date" : {
+                    "xmlns" : "",
+                    "content" : "2022-08-09T00:00:00.000Z"
+                  },
+                  "xmlns" : ""
+                },
+                "xmlns" : "",
+                "isEditable" : {
+                  "xmlns" : "",
+                  "content" : false
+                }
+              },
+              "verbalCommitDate" : {
+                "date" : {
+                  "xmlns" : "",
+                  "xsi:nil" : true
+                },
+                "xmlns" : ""
+              },
+              "completeDate" : {
+                "date" : {
+                  "xmlns" : "",
+                  "xsi:nil" : true
+                },
+                "xmlns" : ""
+              }
+            }
+          },
+          "customerOrderId" : {
+            "xmlns" : "",
+            "content" : "552687619-444304786"
+          },
+          "productName" : {
+            "xmlns" : "",
+            "content" : "Adaptive Virtual Services Premises"
+          },
+          "serviceOrderId" : {
+            "xmlns" : "",
+            "content" : "552687619-343126918"
+          }
+        },
+        "serviceId" : {
+          "xmlns" : "",
+          "content" : 343126918
+        }
+      }
+    }
+  }
+}

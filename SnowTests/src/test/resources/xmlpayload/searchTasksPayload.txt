@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://enterprise/bpms/uiservices/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:GetTasks>
+         <Context>
+            <source>BPMPortal</source>
+            <transactionId>BPMPortal-aa53648</transactionId>
+            <requestor>aa53648</requestor>
+            <version>v1_0</version>
+         </Context>
+         <taskSearch>
+            <taskStatus>ALL</taskStatus>
+            <requestType>TASKREPORTING</requestType>
+            <coDomainSearchData>
+               <customerOrderIdList>
+                  <searchString>553136393</searchString>
+               </customerOrderIdList>
+            </coDomainSearchData>
+         </taskSearch>
+      </v1:GetTasks>
+   </soapenv:Body>
+</soapenv:Envelope>

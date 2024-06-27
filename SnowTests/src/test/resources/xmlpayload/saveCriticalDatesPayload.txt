@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="urn:level3/enterprise/commondata/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:SaveCriticalDateRequest>
+         <context>
+            <source>BPMPortal</source>
+            <transactionId>BPMPortal-aa53648</transactionId>
+            <version>v1_0</version>
+         </context>
+         <user>aa53648</user>
+         <criticalDate>
+            <dateContextKey>40133039</dateContextKey>
+            <extDateContextKey/>
+            <dateContextType>ORDER</dateContextType>
+            <authorizeDate><date><date>2022-07-24T00:00:00</date></date></authorizeDate>
+         </criticalDate>
+      </v1:SaveCriticalDateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

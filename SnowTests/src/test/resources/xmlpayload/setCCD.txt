@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="urn:level3/enterprise/commondata/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:SetCCD>
+         <context>
+            <source>BPMPortal</source>
+            <transactionId>BPMPortal-aa53648</transactionId>
+            <version>v1_0</version>
+         </context>
+         <CODomainSetCCDType>
+            <serviceOrderId>552687619-343126918</serviceOrderId>
+            <serviceOrderVersion>1</serviceOrderVersion>
+         </CODomainSetCCDType>
+         <commitDate>2022-07-24T00:00:00</commitDate>
+         <userId>aa53648</userId>
+      </v1:SetCCD>
+   </soapenv:Body>
+</soapenv:Envelope>

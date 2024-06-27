@@ -1,0 +1,32 @@
+{
+  "soap:Envelope" : {
+    "xmlns:xsd" : "http://www.w3.org/2001/XMLSchema",
+    "xmlns:soap" : "http://schemas.xmlsoap.org/soap/envelope/",
+    "xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "soap:Body" : {
+      "SaveTaskDetailsResponse" : {
+        "Context" : {
+          "xmlns" : "",
+          "source" : {
+            "xmlns" : "",
+            "content" : "BPMPortal"
+          },
+          "version" : {
+            "xmlns" : "",
+            "content" : "v1_0"
+          },
+          "transactionId" : {
+            "xmlns" : "",
+            "content" : "BPMPortal-aa53648"
+          },
+          "parentTransactionId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          }
+        },
+        "xmlns" : "http://enterprise/bpms/uiservices/v1",
+        "isError" : false
+      }
+    }
+  }
+}

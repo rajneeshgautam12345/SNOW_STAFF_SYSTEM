@@ -1,0 +1,307 @@
+{
+  "soap:Envelope" : {
+    "xmlns:xsd" : "http://www.w3.org/2001/XMLSchema",
+    "xmlns:soap" : "http://schemas.xmlsoap.org/soap/envelope/",
+    "xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "soap:Body" : {
+      "OrderSearchResponse" : {
+        "Context" : {
+          "xmlns" : "",
+          "source" : {
+            "xmlns" : "",
+            "content" : "BPMPortal"
+          },
+          "version" : {
+            "xmlns" : "",
+            "content" : "v1_0"
+          },
+          "transactionId" : {
+            "xmlns" : "",
+            "content" : "BPMPortal-aa53648"
+          },
+          "parentTransactionId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          }
+        },
+        "xmlns" : "http://enterprise/bpms/uiservices/v1",
+        "isError" : false,
+        "coDomainOrderData" : {
+          "serviceType" : {
+            "xmlns" : "",
+            "content" : "HC_UCPE"
+          },
+          "orderType" : {
+            "xmlns" : "",
+            "content" : "New"
+          },
+          "revisedCommitDate" : {
+            "xmlns" : "",
+            "dateTimeValue" : {
+              "xmlns" : "",
+              "content" : "2022-08-09T11:22:17.000Z"
+            }
+          },
+          "customerCircuitId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "serviceDeliveryGuaranteeCustomer" : {
+            "xmlns" : "",
+            "content" : false
+          },
+          "customRouteFlag" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "productName" : {
+            "xmlns" : "",
+            "content" : "Adaptive Virtual Services Premises"
+          },
+          "activationType" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "AcceleratedIndicator" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "hotcutIndicator" : {
+            "xmlns" : "",
+            "content" : false
+          },
+          "isESA" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "action" : {
+            "xmlns" : "",
+            "content" : "Install"
+          },
+          "componentName" : {
+            "xmlns" : "",
+            "content" : "Adaptive Virtual Services Premises"
+          },
+          "serviceOrderId" : {
+            "xmlns" : "",
+            "content" : "552687619-343126918"
+          },
+          "designType" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "serviceLevel" : {
+            "xmlns" : "",
+            "content" : "Platinum"
+          },
+          "totalMRC" : {
+            "xmlns" : "",
+            "content" : 158
+          },
+          "orderAction" : {
+            "xmlns" : "",
+            "content" : "Install"
+          },
+          "fiberAssignment" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "customerName" : {
+            "xmlns" : "",
+            "content" : "Q&O SRT Account"
+          },
+          "inboundAsrIndicator" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "usesPDN" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "designedForDiversity" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "portAssignment" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "projectId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "graniteInventoryDetails" : {
+            "xmlns" : "",
+            "zUltimateLocNum" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "XLRLink" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "aUltimateEndSite" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "zUltimateEndSite" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "fecZEnd" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "fecAEnd" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "inventoryPathId" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            },
+            "aUltimateLocNum" : {
+              "xmlns" : "",
+              "xsi:nil" : true
+            }
+          },
+          "isAHub" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "serviceOrderVersion" : {
+            "xmlns" : "",
+            "content" : 1
+          },
+          "sourceSystem" : {
+            "xmlns" : "",
+            "content" : "PIPELINE"
+          },
+          "customerOrderId" : {
+            "xmlns" : "",
+            "content" : "552687619-444304786"
+          },
+          "NNIIndicator" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "latencyGuaranteeValue" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "orderStatus" : {
+            "xmlns" : "",
+            "content" : "Accepted"
+          },
+          "inventoryDesignSource" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "tsp" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "accessForVoice" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "xmlns" : "",
+          "regionCode" : {
+            "xmlns" : "",
+            "content" : "NA"
+          },
+          "vlan" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "nxIndicator" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "customerId" : {
+            "xmlns" : "",
+            "content" : "2-GCCKRG"
+          },
+          "expediteFlag" : {
+            "xmlns" : "",
+            "content" : false
+          },
+          "expediteValue" : {
+            "xmlns" : "",
+            "content" : "Standard"
+          },
+          "customerRequestDate" : {
+            "xmlns" : "",
+            "dateTimeValue" : {
+              "xmlns" : "",
+              "content" : "2022-07-28T06:00:00.000Z"
+            }
+          },
+          "transportType" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "serviceId" : {
+            "xmlns" : "",
+            "content" : 343126918
+          },
+          "networkType" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "customerCommitDate" : {
+            "xmlns" : "",
+            "dateTimeValue" : {
+              "xmlns" : "",
+              "content" : "2022-08-09T00:00:00.000Z"
+            }
+          },
+          "upgradeOrderIndicator" : {
+            "xmlns" : "",
+            "content" : false
+          },
+          "submittedBy" : {
+            "xmlns" : "",
+            "content" : "AC65147"
+          },
+          "usesAHub" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "cnr" : {
+            "xmlns" : "",
+            "content" : "No"
+          },
+          "totalNRC" : {
+            "xmlns" : "",
+            "content" : 200
+          },
+          "customerOrderVersion" : {
+            "xmlns" : "",
+            "content" : 1
+          },
+          "latencyGuaranteeLevel" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "salesRegionCode" : {
+            "xmlns" : "",
+            "content" : "NA"
+          },
+          "networkOrderId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "carrierId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          },
+          "hybridConnectivity" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          }
+        }
+      }
+    }
+  }
+}

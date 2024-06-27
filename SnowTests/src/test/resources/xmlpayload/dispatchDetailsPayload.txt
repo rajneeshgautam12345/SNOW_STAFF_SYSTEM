@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://enterprise/bpms/uiservices/v1">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<v1:SaveTaskDetails>
+			<Context>
+				<source>BPMPortal</source>
+				<transactionId>BPMPortal-aa53648</transactionId>
+				<requestor>aa53648</requestor>
+				<version>v1_0</version>
+				<correlationId>1047CRFX-BCKZ59247:1:DefinePhysicalInstallationTask:81571704</correlationId>
+			</Context>
+			<taskDetail>
+				<taskId>81571704</taskId>
+				<userName>aa53648</userName>
+				<processInstanceId>43764733</processInstanceId>
+				<fieldDispatchLocation>
+					<dispatchGateway>AURSCOFW</dispatchGateway>
+					<workSiteLocation>DNVY083J</workSiteLocation>
+					<nbrOfXConnects>2</nbrOfXConnects>
+					<dueDate>2022-06-24T00:00:00Z</dueDate>
+					<processInstanceId>43764732</processInstanceId>
+					<dispatchComments>Test2</dispatchComments>
+					<lastUpdatedUser>aa53648</lastUpdatedUser>
+					<dispatchType>CROSS_CONNECT</dispatchType>
+					<isSelected>true</isSelected>
+					<readOnly>false</readOnly>
+					<pendingAction>Install</pendingAction>
+					<demarcRequired/>
+				</fieldDispatchLocation>
+				<businessDomain>CUSTOMER</businessDomain>
+			</taskDetail>
+		</v1:SaveTaskDetails>
+	</soapenv:Body>
+</soapenv:Envelope>

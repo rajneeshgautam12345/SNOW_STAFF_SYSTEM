@@ -1,0 +1,28 @@
+{
+  "soap:Envelope" : {
+    "xmlns:xsd" : "http://www.w3.org/2001/XMLSchema",
+    "xmlns:soap" : "http://schemas.xmlsoap.org/soap/envelope/",
+    "xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "soap:Body" : {
+      "SaveCriticalDateResponse" : {
+        "xmlns" : "urn:level3/enterprise/commondata/v1",
+        "isError" : false,
+        "context" : {
+          "xmlns" : "",
+          "source" : {
+            "xmlns" : "",
+            "content" : "BPMPortal"
+          },
+          "transactionId" : {
+            "xmlns" : "",
+            "content" : "BPMPortal-aa53648"
+          },
+          "parentTransactionId" : {
+            "xmlns" : "",
+            "xsi:nil" : true
+          }
+        }
+      }
+    }
+  }
+}
