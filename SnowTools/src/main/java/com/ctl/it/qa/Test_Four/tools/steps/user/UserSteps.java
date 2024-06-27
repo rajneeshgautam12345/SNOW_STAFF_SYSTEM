@@ -58,7 +58,7 @@ public class UserSteps extends E2ESteps {
 		// enterEncryptedPassword(loginPage.tbx_password, myUser);
 		loginPage.btn_next_submit.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(10));
 		loginPage.btn_next_submit.click(); // click on new button new code for 2 step
-		waitABit(18000);
+		waitABit(8000);
 		
 		loginPage.btn_NO.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(500));
 		loginPage.btn_NO.click(); // click the no button
