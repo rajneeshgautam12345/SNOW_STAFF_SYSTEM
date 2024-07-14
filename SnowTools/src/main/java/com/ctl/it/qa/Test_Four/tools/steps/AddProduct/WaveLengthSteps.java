@@ -84,16 +84,16 @@ public class WaveLengthSteps extends E2ESteps {
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
 				
-		waitABit(5000);
+		waitABit(2000);
 		productPage.ddl_wavelenth_A_address.waitUntilClickable().click();// Select address Drop down
 		waitABit(2000);
 		// productPage.ddl_wavelenth_A_address.selectByIndex(0)
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ENTER);
 		System.out.println("first address picked");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for address select 1");
-			productPage.sec_addressdd.waitUntilClickable().click();// Select second address Dropdown
+			//productPage.sec_addressdd.waitUntilClickable().click();// Select second address Dropdown
 		}
 		waitABit(1000);
 		productPage.ddl_wavelenth_Z_address.waitUntilClickable().click();// Select address Drop down
@@ -101,10 +101,10 @@ public class WaveLengthSteps extends E2ESteps {
 		// productPage.ddl_wavelenth_A_address.selectByIndex(0);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 		System.out.println("second address picked");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for address select 2");
-			productPage.sec_addressdd.waitUntilClickable().click();// Select second address Dropdown
+			//productPage.sec_addressdd.waitUntilClickable().click();// Select second address Dropdown
 		}
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN);
 		waitABit(1000);
@@ -127,7 +127,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(1000);
 		productPage.lst_loc_A_wiring.sendKeys(buildingExt_A);
 		System.out.println("set the configuration buildingExt_A");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for A wiring select 1");
 		}
@@ -135,11 +135,11 @@ public class WaveLengthSteps extends E2ESteps {
 		
 		executor.executeScript("arguments[0].click();", productPage.lst_ZLocInsideWiring);
 		//productPage.lst_ZLocInsideWiring.waitUntilClickable().click();// Select building ext
-		waitABit(4000);
-		productPage.lst_ZLocInsideWiring.sendKeys(buildingExt_Z);
 		waitABit(2000);
+		productPage.lst_ZLocInsideWiring.sendKeys(buildingExt_Z);
+		//waitABit(2000);
 		System.out.println("set the configuration buildingExt_Z ");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for z wiring select 1");
 		}
@@ -155,7 +155,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(3000);
 		productPage.lst_CustomRoute.sendKeys(custom_Route);
 		System.out.println("set the configuration Custom_Route");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for Custom_Route");
 		}
@@ -176,7 +176,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(2000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
 		
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for term");
 		}
@@ -184,35 +184,13 @@ public class WaveLengthSteps extends E2ESteps {
 		executor.executeScript("arguments[0].scrollIntoView();", productPage.btn_continue);
 		WebElement continbtn = getDriver().findElement(By.cssSelector("#btnAttribContinue"));
 		continbtn.click();
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for Continue");
 		}
 		
 		
 		waitABit(1000);
-//		productPage.btn_continue.waitUntilClickable();// Select btn_continue
-//		waitABit(5000);
-//		productPage.btn_continue.click();
-//		myflag = WaitAndSync();
-//		if (myflag) {
-//			System.out.println("error in WaitAndSync for Continue");
-//		}
-
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		waitABit(1000);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		waitABit(1000);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		waitABit(1000);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		waitABit(1000);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		waitABit(1000);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_UP);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-//		waitABit(2000);
-		
 		
 		if(!protection.equals("Unprotected"))
 		{
@@ -222,7 +200,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(1000);
 		productPage.lst_Protection.sendKeys(protection);
 		System.out.println("set the configuration Protection ");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for Protection");
 		}
@@ -235,7 +213,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(3000);
 		productPage.lst_CircuitDiversityRequired.sendKeys(circuit_Divesity);
 		System.out.println("set the configuration circuit_Divesity");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for lst_CircuitDiversityRequired");
 		}
@@ -248,7 +226,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(3000);
 		productPage.lst_LatencyGuaranteeLevel.sendKeys(latency_guarantee);
 		System.out.println("set the configuration latency_guarantee ");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for Latency_guarantee");
 		}
@@ -259,6 +237,7 @@ public class WaveLengthSteps extends E2ESteps {
 			waitABit(1000);
 			productPage.txt_LatencyValue.sendKeys("9000");
 			System.out.println("set the configuration latence_value ");
+			myflag = WaitAndSync1();
 			if (myflag) {
 				System.out.println("error in WaitAndSync for txt_LatencyValue");
 			}
@@ -271,7 +250,7 @@ public class WaveLengthSteps extends E2ESteps {
 		waitABit(1000);
 		productPage.lst_Encryption.sendKeys(encryption);
 		System.out.println("set the configuration encryption");
-		myflag = WaitAndSync();
+		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for Encryption");
 		}
@@ -325,29 +304,79 @@ public class WaveLengthSteps extends E2ESteps {
 	
 	public void a_Side_Access_Configuration(String promotion,String aAccessService,String aLoc3rdPartyXconnect)
 	{
+		Boolean myflag;
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+		executor.executeScript("arguments[0].scrollIntoView();", productPage.btn_continue);
+		WebElement continbtn = getDriver().findElement(By.cssSelector("#btnAttribContinue"));
+		continbtn.click();
+		waitABit(4000);
+
+		if(!promotion.equals("Statndard Price"))
+		{
 		productPage.promotion.waitUntilClickable().click(); // Select Building Extension Drop down
 		waitABit(3000);
 		productPage.promotion.selectByVisibleText(promotion);
+		myflag = WaitAndSync1();
+		if (myflag) {
+			System.out.println("error in WaitAndSync for promotion");
+		}
+		}
+		if(!aAccessService.equals("Lumen Provided Access"))
+		{
 		productPage.aAccessService.waitUntilClickable().click(); // Select Building Extension Drop down
 		waitABit(3000);
 		productPage.aAccessService.selectByVisibleText(aAccessService);
+		myflag = WaitAndSync1();
+		if (myflag) {
+			System.out.println("error in WaitAndSync for Continue");
+		}
+		}
 		
+		if(!aLoc3rdPartyXconnect.equals("No"))
+		{
 		productPage.aLoc3rdPartyXConnect.waitUntilClickable().click(); // Select Building Extension Drop down
 		waitABit(3000);
 		productPage.aLoc3rdPartyXConnect.selectByVisibleText(aLoc3rdPartyXconnect);
+		myflag = WaitAndSync1();
+		if (myflag) {
+			System.out.println("error in WaitAndSync for Continue");
+		}
+		}
 		
 	}
 	
 	public void z_Side_Access_Configuration(String zAccessService,String zLoc3rdPartyXconnect)
 	{
 		
+		Boolean myflag;
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+		executor.executeScript("arguments[0].scrollIntoView();", productPage.btn_continue);
+		WebElement continbtn = getDriver().findElement(By.cssSelector("#btnAttribContinue"));
+		continbtn.click();
+		waitABit(4000);
+		
+		if(!zAccessService.equals("Lumen Provided Access"))
+		{
 		productPage.zAccessService.waitUntilClickable().click(); // Select Building Extension Drop down
 		waitABit(3000);
 		productPage.zAccessService.selectByVisibleText(zAccessService);
+		myflag = WaitAndSync1();
+		if (myflag) {
+			System.out.println("error in WaitAndSync for Continue");
+		}
+		}
 		
+		if(!zLoc3rdPartyXconnect.equals("No"))
+		{
 		productPage.zLoc3rdPartyXConnect.waitUntilClickable().click(); // Select Building Extension Drop down
 		waitABit(3000);
 		productPage.zLoc3rdPartyXConnect.selectByVisibleText(zLoc3rdPartyXconnect);
+		myflag = WaitAndSync1();
+		if (myflag) {
+			System.out.println("error in WaitAndSync for Continue");
+		}
+		waitABit(2000);
+		}
 		
 	}
 }

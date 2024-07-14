@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import com.ctl.it.qa.Test_Four.tools.pages.SfaPage;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
@@ -235,6 +236,10 @@ public class ProductPage extends SfaPage {
 																													// list
 	public WebElementFacade lst_network_arrow;
 	// new interface
+	
+	@FindBy(xpath = "(//span[text()='ExaSwitch']/..)[1]") // Select bandwidth list
+	public WebElementFacade exaSwitchProductName;
+	
 	@FindBy(css = "#CircuitType") // Select bandwidth list
 	public WebElementFacade lst_circuitType;
 	

@@ -237,7 +237,7 @@ public class DIASteps extends E2ESteps {
 						.findElement(By.xpath("//span[text()='Proceed to Configure']/.."));
 				WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(90));
 				wait.until(ExpectedConditions.elementToBeClickable(proceedToConfigure));
-				waitABit(3000);
+				waitABit(2000);
 				proceedToConfigure.click();
 				logger.info("Successfully clicked on configure");
 			} else {
@@ -245,7 +245,7 @@ public class DIASteps extends E2ESteps {
 						.findElement(By.xpath("//span[text()='Custom Configure']/.."));
 				WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(90));
 				wait.until(ExpectedConditions.elementToBeClickable(proceedToConfigure));
-				waitABit(8000);
+				waitABit(5000);
 				executor.executeScript("arguments[0].click();", proceedToConfigure);
 				logger.info("Successfully clicked on configure");
 			}
@@ -253,7 +253,7 @@ public class DIASteps extends E2ESteps {
 		// this for new ui
 		waitABit(5000);
 		productPage.waitForTextToAppear("Dedicated Internet Access",90000); // Wait for Upload
-		waitABit(5000);
+		waitABit(2000);
 		myflag = WaitAndSync1();
 		if (myflag) {
 			System.out.println("error in WaitAndSync for bandwidth");

@@ -45,8 +45,9 @@ public class CreateOppySteps extends E2ESteps {
 		// ########################################################################
 		String myEnv = System.getProperty("staf.environment.key");
 		Long tempNum = Math.round(Math.random() * 1000000);
-	    String tcName= System.getProperty("TC_No"); 
-		String myOppName = tcName+String.valueOf(tempNum);
+		String scenarioName=System.getProperty("ScenarioName");
+	    //String tcName= System.getProperty("TC_No"); 
+		String myOppName = scenarioName+String.valueOf(tempNum);
 		System.setProperty("myOpp_name.ID", myOppName); // set the oppty name into memory
 		String sOppName = System.getProperty("myOpp_name.ID"); // get the oppty name from memory
 		logger.info("Create Opportunity " + sOppName);
@@ -110,9 +111,10 @@ public class CreateOppySteps extends E2ESteps {
 		} catch (Exception e) {
 			System.out.println("in catch for new oppty tab "); // end of getting order id
 		}
-		waitABit(5000);
+		//waitABit(5000);
+		homePage.btn_new_opp.withTimeoutOf(Duration.ofSeconds(30)).waitUntilPresent();
 		JavascriptExecutor btn_executor = (JavascriptExecutor) getDriver();
-		homePage.btn_new_opp.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(300));
+		homePage.btn_new_opp.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(100));
 		
 		btn_executor.executeScript("arguments[0].scrollIntoView(true);", homePage.btn_new_opp);
 		btn_executor.executeScript("arguments[0].click();", homePage.btn_new_opp);

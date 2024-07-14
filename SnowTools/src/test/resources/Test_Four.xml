@@ -66,10 +66,12 @@
 			<container name="LoginPage">
 				<container name="Valid">
 				    <field name="tbx_uname" value="AC67376" type="mandatory" />
-				    	<field name="tbx_username" value="sfatst15@centurylink.com" type="mandatory" />
-					    <field name="tbx_password" value="Chemist2024Marcy!15proved#" type="mandatory" />
+<!-- 				    	<field name="tbx_username" value="sfatst15@centurylink.com" type="mandatory" /> -->
+<!-- 					    <field name="tbx_password" value="Chemist2024Marcy!15proved#" type="mandatory" /> -->
 <!-- 					<field name="tbx_username" value="SFATST40@centurylink.com" type="mandatory" /> -->
 <!-- 					<field name="tbx_password" value="M*TAaHuwce2X$x" type="mandatory" /> -->
+					<field name="tbx_username" value="rajneesh.k.gautam@lumen.com" type="mandatory" />
+					<field name="tbx_password" value="Mumtaz@123" type="mandatory" />
 					
 				</container>
 			</container>

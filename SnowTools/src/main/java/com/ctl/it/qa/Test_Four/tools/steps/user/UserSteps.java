@@ -58,7 +58,8 @@ public class UserSteps extends E2ESteps {
 		// enterEncryptedPassword(loginPage.tbx_password, myUser);
 		loginPage.btn_next_submit.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(10));
 		loginPage.btn_next_submit.click(); // click on new button new code for 2 step
-		waitABit(8000);
+		//waitABit(2000);
+		loginPage.waitForTextToAppear("Do this to reduce the number of times you are asked to sign in.", 120000);
 		
 		loginPage.btn_NO.waitUntilClickable().withTimeoutOf(Duration.ofSeconds(500));
 		loginPage.btn_NO.click(); // click the no button

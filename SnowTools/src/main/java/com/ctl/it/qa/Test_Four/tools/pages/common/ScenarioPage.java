@@ -14,8 +14,21 @@ public class ScenarioPage extends SfaPage {
 	// starts here itv2
 	@FindBy(xpath = "//h2[contains(.,'Opportunity Quotes')]/following::input[1]") // New Quote starts here e2e itv1
 	public WebElementFacade btn_newquote;
+	
+	@FindBy(xpath = "//li[@title='Details']")
+	public WebElementFacade details_Tab;
+	
 	@FindBy(xpath = "//a[@data-label='Quotes']")
 	public WebElementFacade tab_quote;
+	
+	@FindBy(xpath = "//*[@title='Solution Defined']")
+	public WebElementFacade solutionDefined;
+	
+	
+	@FindBy(xpath = "//span[text()='Opportunity Quotes']")
+	public WebElementFacade opportunityQuotesTab;
+	
+	
 	@FindBy(xpath = "//button[@title='Edit Fully Executed Contract Attached']/lightning-primitive-icon/*[local-name()='svg']")
 	public WebElementFacade btn_icon_for_Cust;
 	// @FindBy(css = "input[name='quoteName']") //scenario list box Name

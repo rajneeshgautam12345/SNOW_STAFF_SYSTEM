@@ -46,7 +46,7 @@ public class ServiceNowSteps extends E2ESteps {
 	}
 
 	public void searchOrderInDOP() {
-		waitABit(25000);
+		waitABit(30000);
 		// String smId = "SM10414236";
 		//String boid = System.getProperty("Swift.ID");
 		String smId = System.getProperty("SID.ID");
@@ -68,7 +68,7 @@ public class ServiceNowSteps extends E2ESteps {
 }
 
 	public void validateSearchedOrderRecords() throws UserDefinedException {
-		serviceNowPage.waitForTextToAppear("DOP : Order Details", 90000);
+		serviceNowPage.waitForTextToAppear("DOP : Order Details", 20000);
 		logger.info("Order records searched in DOP application");
 		serviceNowPage.orderRecordRow.isDisplayed();
 		String stausOfOrder = serviceNowPage.processStatus.getText();
@@ -258,13 +258,13 @@ public class ServiceNowSteps extends E2ESteps {
 	
 		String myEnv = System.getProperty("staf.environment.key").toUpperCase();
 		//String url="https://lumn--e2e.sandbox.lightning.force.com/lightning/r/Opportunity_Quote__c/aSGVG0000002MHN4A2/view";
-		String url="https://lumn--e2e.sandbox.lightning.force.com/one/one.app#eyJjb21wb25lbnREZWYiOiJvbmU6YWxvaGFQYWdlIiwiYXR0cmlidXRlcyI6eyJhZGRyZXNzIjoiaHR0cHM6Ly9sdW1uLS1lMmUuc2FuZGJveC5saWdodG5pbmcuZm9yY2UuY29tL2FwZXgvTmV3T3Bwb3J0dW5pdHlRdW90ZT9PcHBvcnR1bml0eV9RdW90ZV9fYz1TTTEwNjIyOTI0Jk9wcG9ydHVuaXR5X19jPTAwNlZHMDAwMDA1SXpJSCZPcHBvcnR1bml0eU51bWJlcj0xNTk0NjU0MTgmb3A9RWRpdCZvYmplY3Q9T3Bwb3J0dW5pdHlRdW90ZSZyZXRVUkw9MDA2VkcwMDAwMDVJeklIIn0sInN0YXRlIjp7fX0%3D";
+		String url="https://lumn--e2e.sandbox.lightning.force.com/lightning/r/Opportunity_Quote__c/aSGVG0000003UJJ4A2/view";
 		getDriver().navigate().to(url);
 		
 		waitABit(8000);
 		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		
-		e2e.singleLocationNextandDiscount();
+//		e2e.singleLocationNextandDiscount();
 		
 		//diaSteps.user_adds_dia_products(smyproduct, bandwidth, accessubBandwidth, billingMethod, buildingExt, multipleLogicals, pdr, cdr, term);
 //		senarioDataPage.waitForTextToAppear("Additional Fields", 10000);
