@@ -143,7 +143,8 @@ public class ExaSwitchSteps extends E2ESteps {
 				}
 			}
 			getDriver().findElement(By.xpath("//input[@aria-label='search input']")).sendKeys("ExaSwitch");
-			waitABit(1000);
+			waitABit(2000);
+			
 			getDriver().findElement(By.xpath("(//span[text()='ExaSwitch']/..)[1]")).click();
 			logger.info("ExaSwitch Products added");
 			if (myEnv.equals("TEST3")) {

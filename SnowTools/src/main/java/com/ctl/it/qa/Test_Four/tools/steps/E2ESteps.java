@@ -136,7 +136,7 @@ public abstract class E2ESteps extends Steps {
 		logger.info("above btn discounting----");
 		getDriver().switchTo().activeElement().sendKeys(Keys.PAGE_UP);
 		waitABit(3000);
-		for (int i = 0; i <= 2; i++) {
+		for (int i = 0; i <= 4; i++) {
 			String discountingButtonDisableStatus = productPage.button_discounting.getAttribute("aria-disabled");
 			System.out.println("Discounting and Profitability disabled status--" + discountingButtonDisableStatus);
 			if (discountingButtonDisableStatus.equals("true")) {

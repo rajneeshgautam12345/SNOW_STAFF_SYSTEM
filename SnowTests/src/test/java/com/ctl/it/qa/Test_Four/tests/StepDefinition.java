@@ -1,6 +1,9 @@
 package com.ctl.it.qa.Test_Four.tests;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
 
 import javax.mail.MessagingException;
 
@@ -29,10 +32,24 @@ public class StepDefinition {
 	@Before
 	public void beforeEveryScenario(Scenario scenario) {
 		Serenity.setSessionVariable("file_type").to(scenario.getName());
-		String tcNo=scenario.getName().substring(0,6);
-		System.setProperty("TC_No", tcNo); 
-		String test_No=System.getProperty("TC_No"); 
-		System.out.println("Test Case No-"+test_No);
+//		String tcNo=scenario.getName().substring(0,6);
+//		System.setProperty("TC_No", tcNo); 
+//		String test_No=System.getProperty("TC_No"); 
+//		System.out.println("Test Case No-"+test_No);
+		ArrayList<String>  allTags=(ArrayList<String>) scenario.getSourceTagNames();
+	    for(int i=0;i<=allTags.size()-1;i++)
+	    {
+	    	//System.out.println(allTags.get(i));
+	    	if(allTags.get(i).startsWith("@DIA")||allTags.get(i).startsWith("@Wave"))
+	    	{
+	    	String scenarioName1=allTags.get(i);
+	    	System.out.println("Scenario Name="+scenarioName1);
+	    	String scenarioName=allTags.get(i).substring(1);
+	    	System.setProperty("ScenarioName", scenarioName); 
+	    	System.out.println(System.getProperty("ScenarioName"));
+	    	
+	    	}
+	    }
 	}
 
 	@After

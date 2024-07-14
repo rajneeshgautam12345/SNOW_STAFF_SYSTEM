@@ -1,8 +1,9 @@
 @all
 Feature: Service Now DIA E2E Scenarios2
 
-  @DIA_SNOW2_TC_1
-  Scenario Outline: TC-05-DIA Onnet Order submit to snow
+  @DIA_Onnet_With_MR_&_MIAD 
+  @TEST_EDPSF-52275
+  Scenario Outline: TC-04-DIA Onnet with MIAD and Managed Router Order submit to snow
     Given User is in SFA url
     When User logs in as a "Valid" user
     And User creates an Opportunity "<sAccount>" "<pdays>"
@@ -13,12 +14,18 @@ Feature: Service Now DIA E2E Scenarios2
     And User submit the product configured
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
+    #And User submit the TDF and SDF form "<floorAndRoom>" "<scenario>"
+    #When User submitted the order to DOP "<floorAndRoom>"
+    #And User logs in DOP application
+    #Then User successfully logged in DOP application
+    #When User search the quotes in DOP
+    #Then User successfully get the order records
     Examples: 
-      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | LABBRMCO | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             |                    | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+      | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType                                  | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | DNVFCOQE | Floor 5 Room WLAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | Yes            | Managed Router and Managed Integrated Access Device | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
 
- @DIA_Offnet_With_BE_&_MR
-  @TEST_EDPSF-52276
+@DIA_Offnet_With_BE_&_MR 
+ @TEST_EDPSF-52276
   Scenario Outline: TC-05-DIA Offnet with Building extension and Managed Router Order submit to snow
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -36,14 +43,11 @@ Feature: Service Now DIA E2E Scenarios2
     Then User successfully get the order records
 
     Examples: 
-      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                                | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName            | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | BNNTCOAP | Floor 1 Room TELC| COLORADO | PL0031189037 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided) | No               | 1000 | 1000 |   36 | Yes            | Managed Router     | CISCO C4451X-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+      | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                                | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName            | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | BNNTCOAP | Floor 1 Room TELC | COLORADO | PL0031189037 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided) | No               | 1000 | 1000 |   36 | Yes            | Managed Router     | CISCO C4451X-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
 
-  #| Bloomberg                   |     2 | 1092 CEDAR ST BENNETT CO 80102 USA     | Floor 1       | North Carolina | PL0000005093 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps        |Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided) |        No       |1000 | 1000 |  36   |         Yes   | Managed Router    |CISCO C4451X-ET-01  |Level 3 Provided|  3        | Dedicated_Internet_Access_On_Net | Beth McCarthy  |
-  #2-LK2D1Y
-
-  @DIA_SNOW2_TC_2
-  Scenario Outline: TC-06-DIA Onnet headless Order submit to snow
+  @DIA_SNOW2_TC_1
+  Scenario Outline: TC-05-DIA Onnet Order submit to snow
     Given User is in SFA url
     When User logs in as a "Valid" user
     And User creates an Opportunity "<sAccount>" "<pdays>"
@@ -55,10 +59,61 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod     | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType                                  | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | LABBRMCO | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Commit plus Burst | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router and Managed Integrated Access Device | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | LABBRMCO | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             |                    | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
 
-@Affiliate_Prod
+  @DIA_Onnet_With_MR 
+  @TEST_EDPSF-52281
+  Scenario Outline: TC-09-DIA Onnet with Managed Router Order submit to snow
+    Given User is in SFA url
+    When User logs in as a "Valid" user
+    And User creates an Opportunity "<sAccount>" "<pdays>"
+    And User creates a Secenario
+    And User adds one valid locations with floor "<faddress>" "<floorAndRoom>" "<fstate>" "<fplcode>"
+    And User adds dia product "<smyproduct>" "<bandwidth>" "<accessSubbandwidth>" "<billingMethod>" "<buildingExt>" "<multipleLogicals>" "<pdr>" "<cdr>" "<term>"
+    And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
+    And User submit the product configured
+    And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
+
+    #And User submit the TDF and SDF form "<floorAndRoom>" "<scenario>"
+    #When User submitted the order to DOP "<floorAndRoom>"
+    #And User logs in DOP application
+    #Then User successfully logged in DOP application
+    #When User search the quotes in DOP
+    #Then User successfully get the order records
+    Examples: 
+      | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName            | cpeProvider      | futureday | scenario          | contact       |
+      | Costco Wholesale Corporation |     2 | DNVFCOQE | Floor 5 Room WLAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | Yes            | Managed Router     | CISCO C4451X-ET-01 | Level 3 Provided |         3 | DIA_Onnet_With_MR | Andrew Parada |
+
+
+  @DIA_Onnet_With_BE_&_MR 
+  @TEST_EDPSF-52288
+  Scenario Outline: TC-14-DIA Onnet with Building extension and Managed Router Order submit to snow
+    Given User is in SFA url
+    When User logs in as a "Valid" user
+    And User creates an Opportunity "<sAccount>" "<pdays>"
+    And User creates a Secenario
+    And User adds one valid locations with floor "<faddress>" "<floorAndRoom>" "<fstate>" "<fplcode>"
+    And User adds dia product "<smyproduct>" "<bandwidth>" "<accessSubbandwidth>" "<billingMethod>" "<buildingExt>" "<multipleLogicals>" "<pdr>" "<cdr>" "<term>"
+    And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
+    And User submit the product configured
+    And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
+
+    #And User submit the TDF and SDF form "<floorAndRoom>" "<scenario>"
+    #When User submitted the order to DOP "<floorAndRoom>"
+    #And User logs in DOP application
+    #Then User successfully logged in DOP application
+    #When User search the quotes in DOP
+    #Then User successfully get the order records
+    Examples: 
+      | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                                | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName            | cpeProvider      | futureday | scenario               | contact       |
+      | Costco Wholesale Corporation |     2 | DNVFCOQE | Floor 5 Room WLAB | COLORADO | PL0031189037 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided) | No               | 1000 | 1000 |   36 | Yes            | Managed Router     | CISCO C4451X-ET-01 | Level 3 Provided |         3 | DIA_Onnet_With_BE_&_MR | Andrew Parada |
+
+  
+
+   #| Bloomberg                   |     2 | 1092 CEDAR ST BENNETT CO 80102 USA     | Floor 1       | North Carolina | PL0000005093 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps        |Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided) |        No       |1000 | 1000 |  36   |         Yes   | Managed Router    |CISCO C4451X-ET-01  |Level 3 Provided|  3        | Dedicated_Internet_Access_On_Net | Beth McCarthy  |
+  #2-LK2D1Y
+  @Affiliate_Prod
   Scenario Outline: TC-14-DIA Colorless Simply Onnet order submit to snow.
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -68,13 +123,14 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds dia product "<smyproduct>" "<bandwidth>" "<accessSubbandwidth>" "<billingMethod>" "<buildingExt>" "<multipleLogicals>" "<pdr>" "<cdr>" "<term>"
     And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
     And User submit the product configured
-   And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
+    And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount           | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
+      | sAccount     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
       | SUNDAY UAT 1 |     2 | CLSUCOND | Floor 2 Room MPOE | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
 
-  @DIA_SNOW_Sanity @TEST_EDPSF-11932
+  @DIA_SNOW_Sanity 
+  @TEST_EDPSF-11932
   Scenario Outline: DIA Onnet Order submit to snow
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -132,7 +188,7 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds dia product "<smyproduct>" "<bandwidth>" "<accessSubbandwidth>" "<billingMethod>" "<buildingExt>" "<multipleLogicals>" "<pdr>" "<cdr>" "<term>"
     And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
     And User submit the product configured
-   And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
+    And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
     When User submitted the order to DOP
     And User logs in DOP application
     Then User successfully logged in DOP application
@@ -189,8 +245,6 @@ Feature: Service Now DIA E2E Scenarios2
     Then User validates "<diaTasksName2>" task is open state
     And User completes the "<diaTasksName2>" task
     Then User validates "<diaTasksName2>" task is completed state
-    
-    
     #Then User validates "<diaTasksName2SLA>" task is open state
     #And User completes the "<diaTasksName2SLA>" task
     #Then User validates "<diaTasksName2SLA>" task is completed state
@@ -276,9 +330,7 @@ Feature: Service Now DIA E2E Scenarios2
     Then User validates the workflow "<DIAWorkflow>" is waiting for TDG task
     #When User navigates to order tasks section of "<Component1>"
     #When User navigates to the customer order page
-    
     #And User fillup the tdg records for "<Offnet>" order
-    
     #And User navigates to gather_order_details tab
     #And fillup the access type and access subtype details under tdg form
     #And enters the details for IP subnets and save it]
@@ -345,28 +397,12 @@ Feature: Service Now DIA E2E Scenarios2
     Then User successfully navigated to order line "<Component3>" Item
     When User navigates to product order section of Internet Service
     Then User validates the "<InternetWorkflow>" kicked off for "<Component3>" under flow context
-    Examples: 
-      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType                                  | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       | Component1                | DIAWorkflow                   | Component2         | AccessWorkflow             | Component3       | InternetWorkflow           | diaTasksName1    | diaTasksName2         | diaTasksName3            | diaTasksName4           |
-      | Costco Wholesale Corporation |     2 | LTTNCOML | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router and Managed Integrated Access Device | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada | Dedicated Internet Access | LMN-ORCH-DIA-Order Validation | 	Access - Off Net | LMN-ORCH-SOM-Discover Path | Internet Service | LMN-ORCH-DIA-IP Assignment | Order Validation | Customer Coordination | Gather Order Details TDE | LMN-SOM-Initiate TDG-MS |
-
-  
-   @Colorless1
-  Scenario Outline: TC-033-DIA Colorless Onnet order submit to snow.
-    Given User is in SFA url
-    When User logs in as a "Valid" user
-    And User creates an Opportunity "<sAccount>" "<pdays>"
-    And User creates a Secenario
-    And User adds one valid locations with floor "<faddress>" "<floorAndRoom>" "<fstate>" "<fplcode>"
-    And User adds dia product "<smyproduct>" "<bandwidth>" "<accessSubbandwidth>" "<billingMethod>" "<buildingExt>" "<multipleLogicals>" "<pdr>" "<cdr>" "<term>"
-    And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
-    And User submit the product configured
-    And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress    | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | LABMRLCOS00    | Floor 1 Room MPOE | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
-   
-    @Simply45
+      | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType                                  | kitName                                   | cpeProvider      | futureday | tasknum                          | contact       | Component1                | DIAWorkflow                   | Component2       | AccessWorkflow             | Component3       | InternetWorkflow           | diaTasksName1    | diaTasksName2         | diaTasksName3            | diaTasksName4           |
+      | Costco Wholesale Corporation |     2 | LTTNCOML | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router and Managed Integrated Access Device | CISCO C4451X-ET-01 and CISCO C4451X-T1-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada | Dedicated Internet Access | LMN-ORCH-DIA-Order Validation | Access - Off Net | LMN-ORCH-SOM-Discover Path | Internet Service | LMN-ORCH-DIA-IP Assignment | Order Validation | Customer Coordination | Gather Order Details TDE | LMN-SOM-Initiate TDG-MS |
+
+  @Simply45
   Scenario Outline: TC-033-DIA Colorless Simply Onnet2 order submit to snow.
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -379,10 +415,10 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress    | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | LFYTCOET    | Floor 1 Room 3 | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
-   
-    @Prod
+      | sAccount                     | pdays | faddress | floorAndRoom   | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | LFYTCOET | Floor 1 Room 3 | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+
+  @Prod
   Scenario Outline: TC-033-DIA Colorless Simply Onnet order submit to snow.
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -395,11 +431,10 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress    | floorAndRoom       | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | FTCMCOQJ    | Floor 1 Room TELCO | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
-     
-     
-     @Simply1
+      | sAccount                     | pdays | faddress | floorAndRoom       | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | FTCMCOQJ | Floor 1 Room TELCO | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+
+  @Simply1 
   @TEST_EDPSF-4029
   Scenario Outline: TC-033-DIA Colorless Simply Onnet order submit to snow.
     Given User is in SFA url
@@ -413,10 +448,10 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress    | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact|
-      | Costco Wholesale Corporation |     2 | BXELSDAES02    | Floor 1 | COLORADO | SL0003313633 | Dedicated Internet Access | Fast E - Ethernet Switched Access (1-100)  | 100 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada | 
-      
-       @DIA_SNOW_TC_9
+      | sAccount                     | pdays | faddress    | floorAndRoom | fstate   | fplcode      | smyproduct                | bandwidth                                 | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | BXELSDAES02 | Floor 1      | COLORADO | SL0003313633 | Dedicated Internet Access | Fast E - Ethernet Switched Access (1-100) | 100 Mbps           | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+
+  @DIA_SNOW_TC_9 
   @TEST_EDPSF-4139
   Scenario Outline: TC-09-DIA Onnet Order with FastE bandwidth submit to snow
     Given User is in SFA url
@@ -435,8 +470,8 @@ Feature: Service Now DIA E2E Scenarios2
 
   #|WHOLE FOODS MARKET SERVICES, INC.|     2 | 1092 CEDAR ST BENNETT CO 80102 USA       | Floor 1       |                | PL0000714932 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000)|1000 Mbps         |Flat Rate      | Standard Delivery - To the MPoE (Customer Provided) |        No       |1000 | 1000 |  36   |  No         |                                                     |                                          |                |  3        | Dedicated_Internet_Access_On_Net |Alex Yuen   |
   # --#2-WWGLDX
-   
-    @DIA_SNOW_TC_8
+ 
+  @DIA_SNOW_TC_8 
   @TEST_EDPSF-4138
   Scenario Outline: TC-08-DIA Onnet Order with 10GIGE bandwidth submit to snow
     Given User is in SFA url
@@ -455,8 +490,8 @@ Feature: Service Now DIA E2E Scenarios2
 
   #|WHOLE FOODS MARKET SERVICES, INC.|     2 | 1092 CEDAR ST BENNETT CO 80102 USA       | Floor 1       |                | PL0000714932 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000)|1000 Mbps         |Flat Rate      | Standard Delivery - To the MPoE (Customer Provided) |        No       |1000 | 1000 |  36   |  No         |                                                     |                                          |                |  3        | Dedicated_Internet_Access_On_Net |Alex Yuen   |
   # --#2-WWGLDX
- 
-  @DIA_SNOW_TC_7
+
+  @DIA_SNOW_TC_7 
   @TEST_EDPSF-4032
   Scenario Outline: TC-07-SDWAN-Validate SDWAN with DIA order move to swift
     Given User is in SFA url
@@ -476,7 +511,7 @@ Feature: Service Now DIA E2E Scenarios2
       | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | smyproduct | accesstype               | access1      | bandwidth                                  | bill_method | buildingExt | futureday | tasknum    | contact       |
       | Costco Wholesale Corporation |     2 | LABBRMCO | Floor 1 Room LAB | COLORADO | SD-WAN     | Dedicated Inernet Access | New or Swift | GigE - Ethernet Switched Access (50-1,000) | Flat Rate   | Standard    |         3 | SD-WAN-DIA | Andrew Parada |
 
-  @DIA_SNOW_TC_4
+  @DIA_SNOW_TC_4 
   @TEST_EDPSF-4134
   Scenario Outline: TC-04-DIA Onnet with Building extension and Multiple logical Order submit to snow
     Given User is in SFA url
@@ -492,10 +527,10 @@ Feature: Service Now DIA E2E Scenarios2
     Examples: 
       | sAccount                     | pdays | faddress | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod   | buildingExt                                                | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
       | Costco Wholesale Corporation |     2 | LTTNCOML | Floor 1 Room LAB | COLORADO | PL0027228028 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | See IP Logicals | Extended Delivery - To the Customer Suite (Lumen Provided) | Yes              | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+
   #| 2-QFRP5B |     2 |  700 W MINERAL AVE LITTLETON CO 80120 USA| Floor 1 Room 1| North Carolina | PL0000005093 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000)| 1000 Mbps        | Flat Rate     | Extended Delivery - To the Customer Suite (Lumen Provided)  |        Yes       |1000 | 1000 |  36   |         No   | Managed Router    |CISCO C4431-ET-01 |Level 3 Provided|  3        | Dedicated_Internet_Access_On_Net | Eric Brown   | Customer Order Id | 552003812 | Monarch  |
  
- 
-   @Simply
+  @Simply
   Scenario Outline: TC-17-DIA Colorless Simply Onnet order submit to snow.
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -508,10 +543,10 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
 
     Examples: 
-      | sAccount                     | pdays | faddress    | floorAndRoom     | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
-      | Costco Wholesale Corporation |     2 | WVCYUTWX    | Floor 1 Room MPOE | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
-   
-   @DIA_SNOW_TC_12
+      | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName           | cpeProvider      | futureday | tasknum                          | contact       |
+      | Costco Wholesale Corporation |     2 | WVCYUTWX | Floor 1 Room MPOE | COLORADO | SL0003313633 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             | Managed Router     | CISCO C4431-ET-01 | Level 3 Provided |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
+
+  @DIA_SNOW_TC_12
   Scenario Outline: TC-12-DIA Offnet with ROC Order submit to snow
     Given User is in SFA url
     When User logs in as a "Valid" user
@@ -522,8 +557,7 @@ Feature: Service Now DIA E2E Scenarios2
     And User adds managed service component to DIA order "<managedService>" "<managedServiceType>" "<kitName>" "<cpeProvider>"
     And User submit the product configured
     And User adds secenario data "<contact>" "<pdays>" "<floorAndRoom>"
-    
+
     Examples: 
       | sAccount                     | pdays | faddress | floorAndRoom      | fstate   | fplcode      | smyproduct                | bandwidth                                  | accessSubbandwidth | accessSolution  | billingMethod | buildingExt                                         | multipleLogicals | pdr  | cdr  | term | managedService | managedServiceType | kitName | cpeProvider | futureday | tasknum                          | contact       |
       | Costco Wholesale Corporation |     2 | CLMBGABA | Floor 1 Room TELC | COLORADO | PL0031189037 | Dedicated Internet Access | GigE - Ethernet Switched Access (50-1,000) | 1000 Mbps          | Firm Vendor Bid | Flat Rate     | Standard Delivery - To the MPoE (Customer Provided) | No               | 1000 | 1000 |   36 | No             |                    |         |             |         3 | Dedicated_Internet_Access_On_Net | Andrew Parada |
-   

@@ -1,5 +1,4 @@
 package com.ctl.it.qa.Test_Four.tools.steps.ScenarioManager;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -7,14 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import javax.mail.MessagingException;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-//
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -28,8 +24,6 @@ import com.ctl.it.qa.Test_Four.tools.pages.common.ScenarioPage;
 import com.ctl.it.qa.Test_Four.tools.pages.common.SwiftPage;
 import com.ctl.it.qa.Test_Four.tools.steps.E2ESteps;
 import com.ctl.it.qa.Test_Four.tools.steps.AddProduct.WaveLengthSteps;
-import com.ctl.it.qa.Test_Four.tools.steps.Locations.CreateLocationSteps;
-
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.annotations.findby.By;
 
@@ -105,7 +99,7 @@ public class SecenarioDataSteps extends E2ESteps {
 			//JavascriptExecutor jse1 = (JavascriptExecutor) getDriver();
 			waitABit(1000);
 			executor.executeScript("arguments[0].click()", ContractTypeMouseOver);
-			waitABit(8000);	
+			waitABit(4000);	
 			WebElement element5 = getDriver()
 					.findElement(By.xpath("(//div[contains(@data-target-selection-name,'Contract_Type')]//div[1]/div[1]/button/span)[1]")); // contract list box
 			//JavascriptExecutor jse5 = (JavascriptExecutor) getDriver();
@@ -177,6 +171,7 @@ public class SecenarioDataSteps extends E2ESteps {
 		}
 		else
 		{
+		
 		executor.executeScript("arguments[0].click();", senarioDataPage.lnk_agreement); // click on agreement link.
 		waitABit(2000);
 		executor.executeScript("arguments[0].click();", senarioDataPage.lnk_agreement); // click on agreement link.
@@ -203,8 +198,10 @@ public class SecenarioDataSteps extends E2ESteps {
 			waitABit(5000);
 			senarioDataPage.waitForTextToAppear("Stage changed successfully", 90000);
 			logger.info("Stage successfully changed to Agreement");
+			
 		} catch (Exception e) {
 			System.out.println(e);
+			
 		}
 		}
 		waitABit(1000);
@@ -282,12 +279,12 @@ public class SecenarioDataSteps extends E2ESteps {
 			waitABit(4000);
 			}
 		} catch (Exception e) {
-			System.out.println("User was in Lightening ");
+			System.out.println("User was not in Lightening ");
 		}
-		
+		getDriver().switchTo().defaultContent();	
 		senarioDataPage.waitForTextToAppear("Hot Cut/Replacement?", 90000);		
 		getDriver().switchTo().activeElement().sendKeys(Keys.PAGE_UP);
-		waitABit(1000);
+		waitABit(2000);
 		
 		String ccmValue = "hhh";
 		//String ccmValue = getDriver().findElement(By.xpath("(//force-lookup/div/records-hoverable-link/div/a)[2]")).getText();
@@ -319,7 +316,10 @@ public class SecenarioDataSteps extends E2ESteps {
 		} catch (Exception e) {
 			System.out.println("User was in hot cut but it failed to oppen  ");
 		}
-		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
+		
+		executor.executeScript("arguments[0].click();", senarioDataPage.ddl_sale_engineer);
+		
+//		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
 		waitABit(1000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
 		waitABit(2000);
@@ -343,8 +343,18 @@ public class SecenarioDataSteps extends E2ESteps {
 			getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
 			waitABit(3000);
 			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-			waitABit(3000);
+			waitABit(4000);
 		}
+		
+		executor.executeScript("arguments[0].click();", senarioDataPage.ottService); // done button
+		waitABit(2000);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		waitABit(800);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		waitABit(800);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+		waitABit(2000);
+		
 		executor.executeScript("arguments[0].click();", senarioDataPage.btn_hotcut_save); // done button
 		logger.info("Saved button clicked");
 		waitABit(15000);
@@ -353,7 +363,7 @@ public class SecenarioDataSteps extends E2ESteps {
 	}
 
 	@Step
-	public void add_Contacts(String contact) {
+	public void add_Contacts(String contact,String scenario) {
 		System.out.println("in function to set the contacts ");
 		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		executor.executeScript("arguments[0].click();", senarioDataPage.lnk_go_to_Contacts); // go to contracts
@@ -380,11 +390,13 @@ public class SecenarioDataSteps extends E2ESteps {
 		senarioDataPage.contactRoleSelection5.selectByVisibleText("Local Secondary Contact");
 		waitABit(1000);
 		
-//		getDriver().findElement(By.xpath("//input[@value='Add']")).click();
-//		waitABit(2000);
-//		senarioDataPage.contactRoleSelection6.selectByVisibleText("Property Manager");
-//		waitABit(1000);
-		
+		if(scenario.equals("DIA_Affiliate"))
+		{
+		getDriver().findElement(By.xpath("//input[@value='Add']")).click();
+		waitABit(2000);
+		senarioDataPage.contactRoleSelection6.selectByVisibleText("Property Manager");
+		waitABit(1000);
+		}
 		getDriver().findElement(By.xpath("(//div[@class='requiredInput']/input)[1]")).sendKeys(contact);
 		waitABit(2000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);// order contact
@@ -413,14 +425,16 @@ public class SecenarioDataSteps extends E2ESteps {
 		System.out.println("added fifth contact  " + contact);
 		waitABit(1500);
 		
-//		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
-//		waitABit(1500);
-//		getDriver().switchTo().activeElement().sendKeys("Andrew Ranney");// send in LCON sec contact name
-//		waitABit(1500);
-//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);// billing contact
-//		System.out.println("added sixth contact  " + contact);
-//		waitABit(1500);
-		
+		if(scenario.equals("DIA_Affiliate"))
+		{
+		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
+		waitABit(1500);
+		getDriver().switchTo().activeElement().sendKeys("Andrew Ranney");// send in Property Manager contact name
+		waitABit(1500);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);// billing contact
+		System.out.println("added sixth contact  " + contact);
+		waitABit(1500);
+		}
 		getDriver().findElement(By.xpath("//input[@type='submit' and @value='Save']")).click();
 		logger.info("Successfully pressed the save contact button");
 		waitABit(10000);
@@ -428,7 +442,7 @@ public class SecenarioDataSteps extends E2ESteps {
 	}
 
 	@Step
-	public void add_Attachment(int pdays) {
+	public void add_Attachment(int pdays,String attchemntType) {
 		logger.info("in add attachment function");
 		try {
 			senarioDataPage.lbl_oppty_quote.waitUntilEnabled();
@@ -451,6 +465,10 @@ public class SecenarioDataSteps extends E2ESteps {
 		// Change Frame to add Document Details
 		getDriver().switchTo().parentFrame();
 		logger.info("Switched to parent frame");
+		
+//		senarioDataPage.waitForTextToAppear("Add Global Attachment", 80000);
+//		senarioDataPage.getDriver().findElement(By.xpath("//button[text()='Add Global Attachment']")).click();
+		
 		waitABit(10000);
 		getDriver().switchTo().frame(0);
 		logger.info("Switched to Attachement frame");
@@ -461,10 +479,10 @@ public class SecenarioDataSteps extends E2ESteps {
 		logger.info("Entered Document Name");
 		// Select Document Type
 		senarioDataPage.lst_doc_type.withTimeoutOf(30, TimeUnit.SECONDS).waitUntilPresent()
-				.selectByValue("Service Order Form"); //
+				.selectByValue(attchemntType); //
 		logger.info("Entered Document Type");
 		// Add Document Date
-		waitABit(4000);
+		waitABit(3000);
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); // Set Date
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -489,18 +507,32 @@ public class SecenarioDataSteps extends E2ESteps {
 		} catch (Exception e) {
 			System.out.println("failed to switch to default frame ");
 		}
-		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(50));
 		try {
 			for (int i = 0; i < 2; i++) {
 				wait.until(ExpectedConditions
 						.frameToBeAvailableAndSwitchToIt(By.xpath("//*[starts-with(@name,'vfFrameId_17')]")));
 				logger.info("Waiting to switch to attachement frame");
+				i=2;
 			}
 		} 
 		catch (Exception e) {
 			logger.info("failed to switch to vfFrame frame ");
 		}
-		getDriver().switchTo().frame("theIframe"); // Change to the Attachment Frame
+		
+		try {
+			for (int i = 0; i < 2; i++) {
+				wait.until(ExpectedConditions
+						.frameToBeAvailableAndSwitchToIt(By.xpath("//*[starts-with(@name,'theIframe')]")));
+				logger.info("Waiting to switch to theIframe");
+				i=2;
+			}
+		} 
+		catch (Exception e) {
+			logger.info("failed to switch to vfFrame frame ");
+		}
+		
+		//getDriver().switchTo().frame("theIframe"); // Change to the Attachment Frame
 		logger.info("Switched to theIframe");
 		wait.until(ExpectedConditions.elementToBeClickable(senarioDataPage.btn_sm_addfile));
 		try {
@@ -519,6 +551,7 @@ public class SecenarioDataSteps extends E2ESteps {
 		logger.info("file uploaded complete");
 		getDriver().switchTo().parentFrame();
 		logger.info("switching to parent frame before going into ban");
+		
 		senarioDataPage.btn_sm_backtorecord.withTimeoutOf(30, TimeUnit.SECONDS).waitUntilPresent().click(); // Back to
 																											// Scenario
 																											// // Detail
@@ -551,6 +584,11 @@ public class SecenarioDataSteps extends E2ESteps {
 		// senarioDataPage.waitForTextToAppear("Select Billing Account", 50000);
 		logger.info("trying to click on the quote button ");
 		senarioDataPage.lbl_oppty_quote.click();
+		senarioDataPage.waitForTextToAppear("Global Notes", 20000);
+		String banStatus_check=senarioDataPage.ban_check.getAttribute("icon-name");
+		System.out.println("BAN status-"+banStatus_check);
+		if(!banStatus_check.equals("action:approval"))
+		{
 		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
 		waitABit(700);
 		getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
@@ -621,6 +659,7 @@ public class SecenarioDataSteps extends E2ESteps {
 																												// quote
 																												// //																											// button
 		executor.executeScript("arguments[0].click();", element);
+		}
 		
 		E2ESteps.printInGreenColor(" add BAN  information ", " Out of add_Ban" + "Ban id is " + acct);
 	}
@@ -833,143 +872,132 @@ public class SecenarioDataSteps extends E2ESteps {
 	}
 	
 	
-	public void submitTechnicalDesignForm()
-	{		
-		String myEnv = System.getProperty("staf.environment.key").toUpperCase();
+//	public void submitTechnicalDesignForm()
+//	{		
+//		String myEnv = System.getProperty("staf.environment.key").toUpperCase();
 //		
-		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-//		getDriver().switchTo().parentFrame();
-//		logger.info("after parent frame");
-//		getDriver().switchTo().frame(0);
-//		logger.info("after frame 0");
-//		WebElement element = getDriver().findElement(
-//				By.cssSelector(".pbHeader table  tbody tr  .pbButton input.btn[value=\"Return to Quote\"]")); // return
-//																												// // to
-//																												// //
-//																												// quote
-//																												// //																											// button
-//		executor.executeScript("arguments[0].click();", element);
-		logger.info("in function to submitTechnicalDesignForm");
-		waitABit(10000);
-		
-		logger.info("returning to quote");
-		try {
-			for (int i = 0; i < 3; i++) {
-				getDriver().switchTo().parentFrame(); // Change to the Attachment Frame
-				logger.info("Switched to parent frame");
-			}
-		} catch (Exception e) {
-			System.out.println("failed to switch to parent frame ");
-		}
-		getDriver().switchTo().defaultContent();		 
-		waitABit(2000);
-		senarioDataPage.waitForTextToAppear("Additional Fields", 10000);
-		String currentUrl= getDriver().getCurrentUrl();		
-		String sProductType = System.getProperty("myProduct.ID");
-		
-		senarioDataPage.moreElement.click();
-		waitABit(1000);
-		List<WebElement> allOptions = getDriver()
-				.findElements(By.xpath("//div[@role='menu']/slot/runtime_platform_actions-action-renderer"));
-		int allSizeOptions = allOptions.size();
-		logger.info("Sizeee--" + allSizeOptions);
-		for(int i=0;i<=allOptions.size()-1;i++)
-		 {
-			String title=allOptions.get(i).getAttribute("title");
-			if(title.equals("Technical Design Form"))
-			{
-				allOptions.get(i).click();	
-				logger.info("Successfully clicked on Technical Design form");
-			}
-		} 
-			
-		
+//		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+//		logger.info("in function to submitTechnicalDesignForm");
+//		waitABit(10000);
+//		
+//		logger.info("returning to quote");
+//		try {
+//			for (int i = 0; i < 3; i++) {
+//				getDriver().switchTo().parentFrame(); // Change to the Attachment Frame
+//				logger.info("Switched to parent frame");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("failed to switch to parent frame ");
+//		}
+//		getDriver().switchTo().defaultContent();		 
+//		waitABit(2000);
+//		senarioDataPage.waitForTextToAppear("Additional Fields", 10000);
+//		String currentUrl= getDriver().getCurrentUrl();		
+//		String sProductType = System.getProperty("myProduct.ID");
+//		
+//		senarioDataPage.moreElement.click();
+//		waitABit(1000);
+//		List<WebElement> allOptions = getDriver()
+//				.findElements(By.xpath("//div[@role='menu']/slot/runtime_platform_actions-action-renderer"));
+//		int allSizeOptions = allOptions.size();
+//		logger.info("Sizeee--" + allSizeOptions);
+//		for(int i=0;i<=allOptions.size()-1;i++)
+//		 {
+//			String title=allOptions.get(i).getAttribute("title");
+//			if(title.equals("Technical Design Form"))
+//			{
+//				allOptions.get(i).click();	
+//				logger.info("Successfully clicked on Technical Design form");
+//			}
+//		} 
+//			
+//		
+//	
+//		getDriver().switchTo().frame(senarioDataPage.iframe_quote);		
+//		getDriver().switchTo().frame(senarioDataPage.iframe_manage_scenario);			
+//		senarioDataPage.waitForTextToAppear("DQPK", 80000);
+//		logger.info("Found the TDF record");
+//		waitABit(1000);		
+//		Actions a1=new Actions(getDriver());
+//		a1.moveToElement(senarioDataPage.tdf_OptionIcon).click().build().perform();
+//		waitABit(1000);
+//		senarioDataPage.editMenu.click();
+//		waitABit(15000);
+//		if(sProductType.equals("Dedicated Internet Access"))
+//		{
+//		if(myEnv.equals("TEST4"))
+//		{
+//			executor.executeScript("arguments[0].click();", senarioDataPage.ipTechDetails);
+//			waitABit(2000);
+//			
+//		}		
+//		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.ipModeBridged);
+//		waitABit(1000);
+//		executor.executeScript("arguments[0].click();", senarioDataPage.ipModeBridged);		
+//		
+//		if(myEnv.equals("TEST4"))
+//		{
+//			waitABit(2000);
+//			executor.executeScript("arguments[0].click();", senarioDataPage.accessDetails);
+//			waitABit(1000);			
+//		}
+//
+//		}		
+//		if(sProductType.equals("Dedicated Internet Access")||sProductType.equals("ExaSwitch"))
+//		{
+//		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.cablingType);
+//		waitABit(1000);		
+//		executor.executeScript("arguments[0].click();", senarioDataPage.cablingType);
+//		waitABit(3000);		
+//		executor.executeScript("arguments[0].click();", senarioDataPage.fiberMode);
+//		waitABit(1000);
+//		getDriver().switchTo().activeElement().sendKeys("S");
+//		waitABit(700);
+//		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+//		waitABit(1200);
+//		executor.executeScript("arguments[0].click();", senarioDataPage.connectorType);
+//		waitABit(2000);	
+//		if(sProductType.equals("ExaSwitch")) 
+//		{
+//			executor.executeScript("arguments[0].click();", senarioDataPage.opticType);
+//			waitABit(2000);	
+//		}
+//		else {
+//		executor.executeScript("arguments[0].click();", senarioDataPage.existingBuildExtCablingType);
+//		waitABit(2000);	
+//		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtFiberMode);
+//		waitABit(1000);
+//		getDriver().switchTo().activeElement().sendKeys("S");
+//		waitABit(700);
+//		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+//		waitABit(800);	
+//		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtConnectorType);
+//		waitABit(1000);	
+//		
+//		if(!myEnv.equals("TEST4") && sProductType.equals("Dedicated Internet Access") )
+//		{
+//		String networkStatus=senarioDataPage.networkStatus.getText();
+//		if(networkStatus.equals("Off Net"))	
+//		{
+//		senarioDataPage.accessOffnetTab.click();
+//		waitABit(1500);
+//		senarioDataPage.offnetMTU.sendKeys("1500");
+//		waitABit(1000);
+//		}
+//		}
+//		}
+//		
+//		executor.executeScript("arguments[0].click();", senarioDataPage.saveTDFButton);
+//        waitABit(10000);             
+//        getDriver().switchTo().parentFrame();
+//        waitABit(2000);
+//        getDriver().switchTo().defaultContent();
+//        waitABit(2000);    
+//		}
+//	    E2ESteps.printInGreenColor(" add TechnicalDesignForm information ", " Out of submitTechnicalDesignForm");
+//	}
 	
-		getDriver().switchTo().frame(senarioDataPage.iframe_quote);		
-		getDriver().switchTo().frame(senarioDataPage.iframe_manage_scenario);			
-		senarioDataPage.waitForTextToAppear("DQPK", 80000);
-		logger.info("Found the TDF record");
-		waitABit(1000);		
-		Actions a1=new Actions(getDriver());
-		a1.moveToElement(senarioDataPage.tdf_OptionIcon).click().build().perform();
-		waitABit(1000);
-		senarioDataPage.editMenu.click();
-		waitABit(15000);
-		if(sProductType.equals("Dedicated Internet Access"))
-		{
-		if(myEnv.equals("TEST4"))
-		{
-			executor.executeScript("arguments[0].click();", senarioDataPage.ipTechDetails);
-			waitABit(2000);
-			
-		}		
-		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.ipModeBridged);
-		waitABit(1000);
-		executor.executeScript("arguments[0].click();", senarioDataPage.ipModeBridged);		
-		
-		if(myEnv.equals("TEST4"))
-		{
-			waitABit(2000);
-			executor.executeScript("arguments[0].click();", senarioDataPage.accessDetails);
-			waitABit(1000);			
-		}
-
-		}		
-		if(sProductType.equals("Dedicated Internet Access")||sProductType.equals("ExaSwitch"))
-		{
-		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.cablingType);
-		waitABit(1000);		
-		executor.executeScript("arguments[0].click();", senarioDataPage.cablingType);
-		waitABit(3000);		
-		executor.executeScript("arguments[0].click();", senarioDataPage.fiberMode);
-		waitABit(1000);
-		getDriver().switchTo().activeElement().sendKeys("S");
-		waitABit(700);
-		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-		waitABit(1200);
-		executor.executeScript("arguments[0].click();", senarioDataPage.connectorType);
-		waitABit(2000);	
-		if(sProductType.equals("ExaSwitch")) 
-		{
-			executor.executeScript("arguments[0].click();", senarioDataPage.opticType);
-			waitABit(2000);	
-		}
-		else {
-		executor.executeScript("arguments[0].click();", senarioDataPage.existingBuildExtCablingType);
-		waitABit(2000);	
-		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtFiberMode);
-		waitABit(1000);
-		getDriver().switchTo().activeElement().sendKeys("S");
-		waitABit(700);
-		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-		waitABit(800);	
-		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtConnectorType);
-		waitABit(1000);	
-		
-		if(!myEnv.equals("TEST4") && sProductType.equals("Dedicated Internet Access") )
-		{
-		String networkStatus=senarioDataPage.networkStatus.getText();
-		if(networkStatus.equals("Off Net"))	
-		{
-		senarioDataPage.accessOffnetTab.click();
-		waitABit(1500);
-		senarioDataPage.offnetMTU.sendKeys("1500");
-		waitABit(1000);
-		}
-		}
-		}
-		
-		executor.executeScript("arguments[0].click();", senarioDataPage.saveTDFButton);
-        waitABit(10000);             
-        getDriver().switchTo().parentFrame();
-        waitABit(2000);
-        getDriver().switchTo().defaultContent();
-        waitABit(2000);    
-		}
-	    E2ESteps.printInGreenColor(" add TechnicalDesignForm information ", " Out of submitTechnicalDesignForm");
-	}
-	
-	public void submit_SingleDigitalForm(String serviceLoc)
+	public void submit_SingleDigitalForm(String serviceLoc,String scenario)
 	{
 		logger.info("in function to submit_SingleDigitalForm");
 		String sProductType = System.getProperty("myProduct.ID");
@@ -992,14 +1020,16 @@ public class SecenarioDataSteps extends E2ESteps {
         waitABit(1000); 
         jse.executeScript("arguments[0].click();", senarioDataPage.packageId);
 		waitABit(11000);
-		jse.executeScript("arguments[0].click();", senarioDataPage.earlyAcceptance);		
-		waitABit(2000);
+		jse.executeScript("arguments[0].click();", senarioDataPage.earlyAcceptance);
+		logger.info("Early acceptance selected successfully");
+		waitABit(1000);
 		jse.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.floorAndRoom);
 		waitABit(1000);
 		senarioDataPage.floorAndRoom.click();
-		waitABit(5000);
+		waitABit(6000);
 		WebElement floorAndRoomText=getDriver().findElement(By.xpath("//input[@name='designators']"));		
 		floorAndRoomText.sendKeys(serviceLoc);
+		logger.info("service location added successfully");
 		waitABit(2000);
 		String networStatus=senarioDataPage.sdfNetworkStatus.getText();
 		if(myEnv.equals("TEST4"))
@@ -1011,6 +1041,7 @@ public class SecenarioDataSteps extends E2ESteps {
 			waitABit(1000);
 			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
 			waitABit(2000);
+			logger.info("LOA_CFA selected as No successfully");
 		}		
 		jse.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.add_edit_LocalContact);
 		waitABit(4000);	
@@ -1028,8 +1059,9 @@ public class SecenarioDataSteps extends E2ESteps {
 		waitABit(2000);		
 		senarioDataPage.saveContactSDF.click();
 		waitABit(6000);
+		logger.info("LCON Primary added successfully");
 		
-		if(networStatus.contains("Off Net"))
+		if(networStatus.contains("Off Net") ||scenario.equals("DIA_Affiliate"))
 		{
 		senarioDataPage.addLocalContactButton.click();
 		waitABit(4000);	
@@ -1046,33 +1078,37 @@ public class SecenarioDataSteps extends E2ESteps {
 		waitABit(2000);
 		senarioDataPage.saveContactSDF.click();
 		waitABit(6000);
+		logger.info("LCON secondary added successfully");
 		}
 		
 		senarioDataPage.closeLocalContactWindow.click();
 		if(sProductType.equals("ExaSwitch") || sProductType.equals("Wavelength"))
-		{
-			
-		//WebElement loa_cfa_z=getDriver().findElement(By.xpath("//button[@name='LOA_CFA_Z__c']"));		
+		{			
 		jse.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.loa_cfa_z);	
 		jse.executeScript("arguments[0].click();", senarioDataPage.loa_cfa_z);	
 		waitABit(2000);
-		getDriver().switchTo().activeElement().sendKeys("L");
-		waitABit(1000);
+		getDriver().switchTo().activeElement().sendKeys("None");
+		waitABit(2000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
 		waitABit(2000);
-		//WebElement vendorName=getDriver().findElement(By.xpath("//input[@name='Vendor_Name_Z__c']"));
-		senarioDataPage.vendorName.sendKeys("Comcast");	
+//		senarioDataPage.vendorName.sendKeys("Comcast");	
+//		waitABit(2000);
 		jse.executeScript("arguments[0].scrollIntoView(true);",senarioDataPage.floorAndRoom2);
-		//jse.executeScript("arguments[0].click();", senarioDataPage.floorAndRoom2);
 		waitABit(1000);
 		senarioDataPage.floorAndRoom2.click();
-		waitABit(5000);
+		waitABit(6000);
 		WebElement floorAndRoomText2=getDriver().findElement(By.xpath("//input[@name='designators']"));		
-		if(sProductType.equals("Wavelength"))
+		if((scenario.equals("Wavelength_A_Onnet_and_Z_Onnet"))||(scenario.equals("Wavelength_A_Onnet_and_Z_Onnet_3rdParty"))||(scenario.equals("Wavelength_Protected"))||(scenario.equals("Wavelength_Encrypted"))||(scenario.equals("Wavelength_Predoply_On")))
 		{
-		String floorRoom2="Foor 0 Room 0";
+		String floorRoom2="Floor 0 Room 0";
 		floorAndRoomText2.sendKeys(floorRoom2);
 		waitABit(2000);
+		}
+		else if (scenario.equals("Wavelength_A_Onnet_and_Z_Offnet"))
+		{
+			String floorRoom2="Floor 1 Room TELC";
+			floorAndRoomText2.sendKeys(floorRoom2);
+			waitABit(2000);
 		}
 		else
 		{
@@ -1095,13 +1131,9 @@ public class SecenarioDataSteps extends E2ESteps {
 		senarioDataPage.mobNO_z.sendKeys("2063964987");
 		senarioDataPage.role_z.click();
 		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-    	waitABit(1000);
-		//WebElement save1=getDriver().findElement(By.xpath("//button[@type='submit']"));
-		waitABit(1000);
+    	waitABit(2000);
 		senarioDataPage.saveContactSDF.click();
-		//save1.click();
 		waitABit(6000);
-
 		senarioDataPage.closeLocalContactWindow.click();
 		}	
 		jse.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.save_ValidateButton);
@@ -1110,19 +1142,25 @@ public class SecenarioDataSteps extends E2ESteps {
 		
 		waitABit(7000);	  
 		getDriver().switchTo().window(parent);
-		getDriver().navigate().refresh();
-		waitABit(15000);	 
-		
+//		getDriver().navigate().refresh();
+//		waitABit(15000);	 
+		waitABit(2000);
 		getDriver().switchTo().frame(senarioDataPage.iframe_quote);
 		getDriver().switchTo().frame(senarioDataPage.iframe_manage_scenario);		
 		Actions a2=new Actions(getDriver());
 		a2.moveToElement(senarioDataPage.tdf_OptionIcon).click().build().perform();
 		waitABit(1000);
 		senarioDataPage.editMenu.click();
-		waitABit(10000);
+		//waitABit(10000);
+		waitABit(1000);
+		senarioDataPage.waitForTextToAppear("Product Name", 80000);
+		waitABit(2000);
 		jse.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.publishButton);
 		jse.executeScript("arguments[0].click();", senarioDataPage.publishButton);
-		waitABit(10000);		
+		//waitABit(10000);
+		
+		waitABit(4000);
+		senarioDataPage.waitForTextToAppear("Technical Design is published successfully!", 80000);
 		getDriver().switchTo().parentFrame();
 		waitABit(2000);
 		senarioDataPage.backButton.click();
@@ -1134,19 +1172,8 @@ public class SecenarioDataSteps extends E2ESteps {
 	public void submitTechnicalDesignForm(String scenario)
 	{	
 		String myEnv = System.getProperty("staf.environment.key").toUpperCase();
-//		logger.info("in function to submitTechnicalDesignForm");
+		logger.info("in function to submitTechnicalDesignForm");
 		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-//		getDriver().switchTo().parentFrame();
-//		logger.info("after parent frame");
-//		getDriver().switchTo().frame(0);
-//		logger.info("after frame 0");
-//		WebElement element = getDriver().findElement(
-//				By.cssSelector(".pbHeader table  tbody tr  .pbButton input.btn[value=\"Return to Quote\"]")); // return
-//																												// // to
-//																												// //
-//																												// quote
-//																												// //																											// button
-//		executor.executeScript("arguments[0].click();", element);
 		waitABit(10000);
 		logger.info("returning to quote");
 		try {
@@ -1160,9 +1187,8 @@ public class SecenarioDataSteps extends E2ESteps {
 		getDriver().switchTo().defaultContent();		 
 		waitABit(2000);
 		senarioDataPage.waitForTextToAppear("Additional Fields", 10000);
-		String currentUrl= getDriver().getCurrentUrl();		
-		String sProductType = System.getProperty("myProduct.ID");
-		
+		//String currentUrl= getDriver().getCurrentUrl();		
+		String sProductType = System.getProperty("myProduct.ID");		
 		senarioDataPage.moreElement.click();
 		waitABit(2000);
 		List<WebElement> allOptions = getDriver()
@@ -1178,9 +1204,7 @@ public class SecenarioDataSteps extends E2ESteps {
 				logger.info("Successfully clicked on Technical Design form");
 			}
 		} 
-			
-		
-	
+				
 		getDriver().switchTo().frame(senarioDataPage.iframe_quote);		
 		getDriver().switchTo().frame(senarioDataPage.iframe_manage_scenario);			
 		senarioDataPage.waitForTextToAppear("DQPK", 80000);
@@ -1190,28 +1214,38 @@ public class SecenarioDataSteps extends E2ESteps {
 		a1.moveToElement(senarioDataPage.tdf_OptionIcon).click().build().perform();
 		waitABit(1000);
 		senarioDataPage.editMenu.click();
-		waitABit(15000);
+		logger.info("Clicked on edit TDF record");
+		waitABit(5000);
+		senarioDataPage.waitForTextToAppear("Product Name", 80000);
+		logger.info("TDF form is opened");
+		waitABit(1000);
+	//	waitABit(15000);	
 		if(sProductType.equals("Dedicated Internet Access"))
 		{
 		if(myEnv.equals("TEST4"))
 		{
 			executor.executeScript("arguments[0].click();", senarioDataPage.ipTechDetails);
 			waitABit(2000);
+			logger.info("Clicked on IP Technical Details Tab");
 			
-		}		
-		
+		}				
 		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.ipModeBridged);
 		waitABit(1000);
+		logger.info("Selected the IP Mode as Bridged");
 		//String scenario="";
 		if(scenario.equals("DIA_Headless"))
 		{
-			executor.executeScript("arguments[0].click();", senarioDataPage.ipModeRouted);	
+			executor.executeScript("arguments[0].click();", senarioDataPage.ipModeRouted);
+			logger.info("Selected the IP Mode as Bridged");
 			executor.executeScript("arguments[0].click();", senarioDataPage.LANIPYes);
+			logger.info("Selected the LAN IP");
 			executor.executeScript("arguments[0].click();", senarioDataPage.routingProtocol);
 			getDriver().switchTo().activeElement().sendKeys("BGP");
-			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);		
+			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+			logger.info("Selected the routing protocol as BGP");
 			waitABit(2000);
 			executor.executeScript("arguments[0].click();", senarioDataPage.bgpDetailsTab);
+			logger.info("Clicked on BGP Details Tab");
 			waitABit(2000);
 			senarioDataPage.customer_bgp_asn.sendKeys("10754");
 			senarioDataPage.maintener.sendKeys("COSTCO-MAINT");
@@ -1228,6 +1262,7 @@ public class SecenarioDataSteps extends E2ESteps {
 			senarioDataPage.bgpAdvanced.click();
 			
 			senarioDataPage.meds.click();
+			waitABit(1500);
 			senarioDataPage.moveSelectionArrow.click();
 			
 			senarioDataPage.bfd.click();
@@ -1238,20 +1273,23 @@ public class SecenarioDataSteps extends E2ESteps {
 		else
 		{
 		executor.executeScript("arguments[0].click();", senarioDataPage.ipModeBridged);		
+		logger.info("Selected the IP Mode as Bridged");
 		}
 		if(myEnv.equals("TEST4"))
 		{
 			waitABit(2000);
 			executor.executeScript("arguments[0].click();", senarioDataPage.accessDetails);
+			logger.info("Clicked on Access Details tab");
 			waitABit(1000);			
 		}
 
 		}		
-		if(sProductType.equals("Dedicated Internet Access")||sProductType.equals("ExaSwitch"))
+		if(sProductType.equals("Dedicated Internet Access")||sProductType.equals("ExaSwitch")||sProductType.equals("Wavelength"))
 		{
 		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.cablingType);
 		waitABit(2000);		
 		executor.executeScript("arguments[0].click();", senarioDataPage.cablingType);
+		logger.info("Clicked on Cabling Type");
 		waitABit(3000);		
 		executor.executeScript("arguments[0].click();", senarioDataPage.fiberMode);
 		waitABit(1000);
@@ -1259,45 +1297,144 @@ public class SecenarioDataSteps extends E2ESteps {
 		waitABit(700);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
 		waitABit(1200);
+		logger.info("Selected Single Mode Fiber");
 		executor.executeScript("arguments[0].click();", senarioDataPage.connectorType);
 		waitABit(2000);	
+		logger.info("Selected connector type as LC");
 		if(sProductType.equals("ExaSwitch")) 
 		{
 			executor.executeScript("arguments[0].click();", senarioDataPage.opticType);
 			waitABit(2000);	
+			logger.info("Selected Optic type as LR4");
 		}
 		else {
-		executor.executeScript("arguments[0].click();", senarioDataPage.existingBuildExtCablingType);
-		waitABit(2000);	
-		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtFiberMode);
-		waitABit(1000);
-		getDriver().switchTo().activeElement().sendKeys("S");
-		waitABit(700);
-		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-		waitABit(800);	
-		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtConnectorType);
-		waitABit(1000);	
+//		executor.executeScript("arguments[0].click();", senarioDataPage.existingBuildExtCablingType);
+//		waitABit(2000);	
+//		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtFiberMode);
+//		waitABit(1000);
+//		getDriver().switchTo().activeElement().sendKeys("S");
+//		waitABit(700);
+//		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+//		waitABit(800);	
+//		executor.executeScript("arguments[0].click();", senarioDataPage.buildExtConnectorType);
+//		waitABit(1000);	
 		
-		if(!myEnv.equals("TEST4") && sProductType.equals("Dedicated Internet Access") )
+		if(myEnv.equals("TEST4") && sProductType.equals("Dedicated Internet Access") )
 		{
 		String networkStatus=senarioDataPage.networkStatus.getText();
 		if(networkStatus.equals("Off Net"))	
 		{
 		senarioDataPage.accessOffnetTab.click();
 		waitABit(2000);
+		logger.info("Clicked on Access Offnet Tab");
 		senarioDataPage.offnetMTU.sendKeys("1500");
 		waitABit(2000);
+		logger.info("MTU value entered ");
+		
+		if(scenario.equals("DIA_Offnet_Wave"))
+		{
+			senarioDataPage.colocationSpace.click();
+			logger.info("Colocation selected to No");
+			waitABit(2000);
+		}
 		}
 		}
 		}
 		
-		executor.executeScript("arguments[0].click();", senarioDataPage.saveTDFButton);
-        waitABit(10000);             
-        getDriver().switchTo().parentFrame();
+		//JavascriptExecutor jse = (JavascriptExecutor)driver;
+		//executor.executeScript("document.body.style.zoom = '70%';");
         waitABit(2000);
-        getDriver().switchTo().defaultContent();
-        waitABit(2000);    
+		
+		if(scenario.contains("MR"))
+		{
+			executor.executeScript("arguments[0].click();", senarioDataPage.managedRouterDetails);
+		    waitABit(1500);
+			senarioDataPage.managedRouterDetailsEdit.click();
+			waitABit(3000);
+			senarioDataPage.lanRoutingProtocol.sendKeys("Static");
+			waitABit(1500);
+			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+			waitABit(1500);
+			senarioDataPage.multipleWANSeries_No.click();
+			waitABit(1500);
+			senarioDataPage.multiRouterRole.sendKeys("Managed behind CPE");
+			waitABit(1500);
+			getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+			waitABit(1500);
+			senarioDataPage.multipleWANSeries_No.click();
+			senarioDataPage.multipleLANConnection_No.click();
+			waitABit(1500);	
+			for(int i=0;i<=15;i++)
+			{
+			getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
+			waitABit(800);	
+			String value1=getDriver().switchTo().activeElement().getAttribute("class");
+			System.out.println("classValue="+value1);
+			String value=getDriver().switchTo().activeElement().getAttribute("title");
+			System.out.println("titleValue="+value1);
+			if(value.equals("OK") || value1.equals("saveData"))
+			{
+				getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+				break;
+			}
+			waitABit(2000);	
+			}							
+		}	
 		}
+		executor.executeScript("arguments[0].click();", senarioDataPage.saveTDFButton);
+		 //waitABit(10000); 
+		senarioDataPage.waitForTextToAppear("New version of Technical Design has been saved successfully!", 90000);
+	    logger.info("Technical Design has been saved successfully");
+		waitABit(1000);  
+        getDriver().switchTo().parentFrame();
+        waitABit(3000);
+        getDriver().switchTo().defaultContent();
+        waitABit(1000);  
+        getDriver().navigate().refresh();      
+		
 	    E2ESteps.printInGreenColor(" add TechnicalDesignForm information ", " Out of submitTechnicalDesignForm");
+	}
+	
+	
+	public void addRelatedNumber() {
+		waitABit(4000);
+		getDriver().switchTo().parentFrame();
+		getDriver().switchTo().defaultContent();
+		//WebElement relatedNumber = getDriver().findElement(By.xpath("//a[@title='The following Related Numbers are required in order to submit your order:  CAT Approval']"));
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+		senarioDataPage.waitForTextToAppear("Related Numbers", 90000);
+		String smPage = getDriver().getCurrentUrl();
+		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.relatedNumberLink);
+		executor.executeScript("arguments[0].click();", senarioDataPage.relatedNumberLink);
+		logger.info("clicked on Related number link");
+		waitABit(2000);
+		senarioDataPage.newButton.isCurrentlyEnabled();
+		senarioDataPage.newButton.withTimeoutOf(Duration.ofSeconds(40)).waitUntilPresent().click();
+		logger.info("clicked on New button");
+		senarioDataPage.waitForTextToAppear("RN-ID", 20000);
+		waitABit(2000);
+		senarioDataPage.comments.withTimeoutOf(Duration.ofSeconds(40)).waitUntilClickable().sendKeys("Testing");
+		waitABit(1000);
+		logger.info("comments added successfully");
+		senarioDataPage.relatedNumber.withTimeoutOf(Duration.ofSeconds(40)).waitUntilClickable().sendKeys("12345");
+		
+		executor.executeScript("arguments[0].scrollIntoView(true);", senarioDataPage.type);
+		executor.executeScript("arguments[0].click();", senarioDataPage.type);
+		logger.info("Type added successfully");
+		//senarioDataPage.type.waitUntilClickable().click();
+		waitABit(1000);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		waitABit(1000);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		waitABit(1000);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+		senarioDataPage.carApprovalStatus.withTimeoutOf(Duration.ofSeconds(40)).waitUntilClickable().sendKeys("Completed");
+		waitABit(2000);
+		logger.info("CAR approval status added successfully");
+		senarioDataPage.save.withTimeoutOf(Duration.ofSeconds(40)).waitUntilClickable().click();
+		logger.info("Related number details saved successfully");
+		waitABit(5000);
+		getDriver().navigate().to(smPage);
+		waitABit(6000);
 	}
 }

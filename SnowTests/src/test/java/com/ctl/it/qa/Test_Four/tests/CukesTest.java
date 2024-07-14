@@ -15,10 +15,10 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(plugin = { "pretty", "html:target/cucumber.html", "html:target/site/serenity/index.html",
 		"json:target/jira-xray-data.json", "json:targets/sanity.json", "json:target/cucumber-report.json",
 		"usage:target/site/serenity/cucumber-usage.json" }, 
-features = "src/test/resources/features", tags = "@DIA_Colorless1")
+features = "src/test/resources/features", tags = "@All_Scenario")
 public class CukesTest {
 	/*
-	 * COMMENTS ARE ADDED TO BELOW MENTIONED CLASSES IN TESTS PROJECTS FOR BETTER
+	 * COMMENTS ARE ADDED TO BELOW MENTIONED CLA-SSES IN TESTS PROJECTS FOR BETTER
 	 * UNDERSTANDING OF STAF
 	 * /SampleTests/src/test/java/com/ctl/it/qa/sample/tests/CukesTest.java
 	 * /SampleTests/src/test/java/com/ctl/it/qa/sample/tests/steps/centurylink/

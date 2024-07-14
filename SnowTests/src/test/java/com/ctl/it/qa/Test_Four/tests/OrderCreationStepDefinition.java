@@ -2,6 +2,8 @@ package com.ctl.it.qa.Test_Four.tests;
 
 import javax.mail.MessagingException;
 
+import org.apache.http.impl.conn.tsccm.WaitingThreadAborter;
+
 import com.ctl.it.qa.Test_Four.tools.steps.AddProduct.DIASteps;
 import com.ctl.it.qa.Test_Four.tools.steps.AddProduct.ExaSwitchSteps;
 import com.ctl.it.qa.Test_Four.tools.steps.AddProduct.SDWanSteps;
@@ -130,16 +132,14 @@ public class OrderCreationStepDefinition {
 		if (pdays == 3) {
 			secenariodatasteps.addGlobalNotes();
 		}
-		secenariodatasteps.add_Contacts(contact);
-		secenariodatasteps.add_Attachment(pdays);
+		//secenariodatasteps.add_Contacts(contact);
+		secenariodatasteps.add_Attachment(pdays,"Service Order Form");
 		secenariodatasteps.add_Ban();
 		 
 	//	secenariodatasteps.submitTechnicalDesignForm(floorAndRoom);
 		// secenariodatasteps.submit_the_Order();
 		
 	}
-	
-	
 
 @When("User adds secenario data {string} {string} {string}")
 public void user_adds_secenario_data(String contact, String Pdays, String floorAndRoom) {
@@ -151,9 +151,16 @@ public void user_adds_secenario_data(String contact, String Pdays, String floorA
 	if (pdays == 3) {
 		secenariodatasteps.addGlobalNotes();
 	}
-	secenariodatasteps.add_Contacts(contact);
+	secenariodatasteps.add_Contacts(contact,floorAndRoom);
 	secenariodatasteps.adding_Ban();
-	secenariodatasteps.add_Attachment(pdays);
+	secenariodatasteps.add_Attachment(pdays,"Service Order Form");
+//	String scenarioName=System.getProperty("ScenarioName");
+//	System.out.println("scenarioName==" +scenarioName);
+//	if(scenarioName.equals("Wavelength_Encrypted"))
+//	{
+//		secenariodatasteps.waitABit(6000);
+//		secenariodatasteps.add_Attachment(pdays,"Encrypted Waves Addendum");
+//	}
 	secenariodatasteps.add_Ban();
 	// secenariodatasteps.submit_the_Order();
 }
@@ -164,8 +171,8 @@ public void user_adds_secenario_data(String contact, String Pdays, String floorA
 			throws MessagingException {
 		secenariodatasteps.set_Quote_To_Argeement();
 		secenariodatasteps.set_HotCut();
-		secenariodatasteps.add_Contacts(contact);
-		secenariodatasteps.add_Attachment(pdays);
+		//secenariodatasteps.add_Contacts(contact);
+		secenariodatasteps.add_Attachment(pdays,"Service Order Form");
 		secenariodatasteps.add_Ban();
 		secenariodatasteps.sendMailReport_beforeSwift(tasknum);
 	}
@@ -198,8 +205,8 @@ public void user_adds_secenario_data(String contact, String Pdays, String floorA
 	
 	@When("User submitted the order to DOP {string}")
 	public void user_submitted_the_order_to_dop(String floorAndRoom) {
-		secenariodatasteps.submitTechnicalDesignForm();
-		secenariodatasteps.submit_SingleDigitalForm(floorAndRoom);
+//		secenariodatasteps.submitTechnicalDesignForm();
+//		secenariodatasteps.submit_SingleDigitalForm(floorAndRoom);
 		
 		if(!floorAndRoom.equals("Floor 1 Room 9999"))
 		{
@@ -210,13 +217,13 @@ public void user_adds_secenario_data(String contact, String Pdays, String floorA
 
 	@When("User submitted the order to DOP {string} {string}")
 	public void user_submitted_the_order_to_dop(String floorAndRoom, String scenario) {
-		secenariodatasteps.submitTechnicalDesignForm(scenario);
-		secenariodatasteps.submit_SingleDigitalForm(floorAndRoom);
+//		secenariodatasteps.submitTechnicalDesignForm(scenario);
+//		secenariodatasteps.submit_SingleDigitalForm(floorAndRoom);
 		
-		if(!floorAndRoom.equals("Floor 1 Room 9999"))
-		{
-		secenariodatasteps.submit_the_Order();
-		}
+//		if(!floorAndRoom.equals("Floor 1 Room 9999"))
+//		{
+//		secenariodatasteps.submit_the_Order();
+//		}
 		
 	}
 
@@ -265,6 +272,16 @@ public void user_adds_wavelength_product(String smyproduct, String bandwidth, St
 	
 }
 
+@When("User adds wavelength a side access details {string} {string} {string}")
+public void user_adds_wavelength_a_side_access_details(String promotion, String aAccessService, String aLoc3rdPartyXconnect) {
+	wavelengthSteps.a_Side_Access_Configuration(promotion, aAccessService, aLoc3rdPartyXconnect);
+}
+
+@When("User adds wavelength z side access details {string} {string}")
+public void user_adds_wavelength_z_side_access_details(String zAccessService, String zLoc3rdPartyXconnect) {
+	wavelengthSteps.z_Side_Access_Configuration(zAccessService, zLoc3rdPartyXconnect);
+}
+
 @When("User switch the pre-depoloy status {string}")
 public void user_switch_the_pre_depoloy_status(String pre_DeployStatus) {
 	
@@ -272,6 +289,16 @@ public void user_switch_the_pre_depoloy_status(String pre_DeployStatus) {
 	}
 
 
-
+@When("User submit the TDF and SDF form {string} {string}")
+public void user_submit_the_tdf_and_sdf_form(String floorAndRoom, String scenario) {
+	secenariodatasteps.submitTechnicalDesignForm(scenario);
+	secenariodatasteps.submit_SingleDigitalForm(floorAndRoom,scenario);
+	
+	if(scenario.equals("DIA_Affiliate"))
+	{
+		secenariodatasteps.addRelatedNumber();
+	}
+	
+}
 
 }

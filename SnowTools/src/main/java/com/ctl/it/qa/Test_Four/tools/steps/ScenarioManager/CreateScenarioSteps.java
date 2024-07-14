@@ -3,9 +3,11 @@ package com.ctl.it.qa.Test_Four.tools.steps.ScenarioManager;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -26,36 +28,51 @@ public class CreateScenarioSteps extends E2ESteps {
 	public void user_creates_a_Secenario() {
 
 		WebElement iframe_quote = null;
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		WebElement iframe_manage_scenario = null;
 		String tempSidID = null;
 		String myEnv = (System.getProperty("staf.environment.key")).toUpperCase();
 		String sOppName = System.getProperty("myOpp_name.ID"); // get the oppty name from memory
 		logger.info("in create a secenario");
 		waitABit(2000);
+//		scenarioPage.details_Tab.withTimeoutOf(Duration.ofSeconds(30)).waitUntilVisible().waitUntilEnabled();
+//		scenarioPage.details_Tab.withTimeoutOf(Duration.ofSeconds(90)).waitUntilClickable().click();
+		
 		scenarioPage.waitForTextToAppear("Quotes", 90000);
+	//	scenarioPage.waitForTextToAppear("EMEA/APAC/LATAM Tracking", 90000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN);
+		
+		Actions a1= new Actions(getDriver());
+		a1.moveToElement(scenarioPage.solutionDefined).build().perform();
+		waitABit(2000);
+	//	executor.executeScript("arguments[0].scrollIntoView();", scenarioPage.opportunityQuotesTab);
+		//executor.executeScript("arguments[0].click();", scenarioPage.opportunityQuotesTab);
 		scenarioPage.tab_quote.withTimeoutOf(Duration.ofSeconds(30)).waitUntilVisible().waitUntilEnabled();
 		scenarioPage.tab_quote.withTimeoutOf(Duration.ofSeconds(90)).waitUntilClickable().click();
-		logger.info("Successfully clicked on Quotes");
+//		logger.info("Successfully clicked on Quotes");
 		//waitABit(12000);
 		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(25));
 		//WebElement quoteFrame= getDriver().findElement(By.xpath("(//iframe[contains(@name,'vfFrame')])[1]"));
 	   // //(//iframe[contains(@name,'vfFrame')])[6]
 		wait.until(ExpectedConditions
-				.frameToBeAvailableAndSwitchToIt(By.xpath("(//iframe[contains(@name,'vfFrame')])[1]")));
+				.frameToBeAvailableAndSwitchToIt(By.xpath("(//iframe[contains(@name,'vfFrameId')])[1]")));
 		logger.info("Switched to New Scenario manager frame");
 		//getDriver().switchTo().frame(quoteFrame);
 		scenarioPage.waitForTextToAppear("Quoting System", 90000);
-		//scenarioPage.waitForTextToAppear("OpportunityQuotes", 90000);
+	//	scenarioPage.waitForTextToAppear("OpportunityQuotes", 90000);
 		waitABit(1000);
+//		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+//		waitABit(1000);
 		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
+//		executor.executeScript("arguments[0].scrollIntoView();", scenarioPage.btn_newquote);
 		waitABit(1000);
-		getDriver().switchTo().activeElement().sendKeys(Keys.ARROW_DOWN);
-		scenarioPage.btn_newquote.withTimeoutOf(Duration.ofSeconds(120)).waitUntilClickable().click(); // create scenario
-																										// // manager
-																										// button
+		scenarioPage.btn_newquote.withTimeoutOf(Duration.ofSeconds(120)).waitUntilClickable().click(); // create scenario																																					// button
 		logger.info("Successfully clicked on New Scenario Manager Quote button");
 		waitABit(16000);
+		getDriver().switchTo().defaultContent();
+		
 //		if(myEnv.equals("TEST4"))
 //		{
 //		logger.info("Url Refreshed");
@@ -100,7 +117,7 @@ public class CreateScenarioSteps extends E2ESteps {
 		scenarioPage.txt_quotename.type(sOppName); // Quote Name
 		logger.info("Quote Name is entered");
 		// scenarioPage.ddl_currencyArrow.click();// drop down arrow for currency
-		// scenarioPage.waitForTextToAppear("Argentinean Pesos - ARS", 20000); // Wait
+		scenarioPage.waitForTextToAppear("US Dollars - USD", 20000); // Wait
 		// for Upload;
 		// getDriver().switchTo().activeElement().sendKeys("US Dollars - USD",
 		// Keys.ENTER); // currency pick
@@ -110,7 +127,7 @@ public class CreateScenarioSteps extends E2ESteps {
 		getDriver().switchTo().activeElement().sendKeys(Keys.PAGE_DOWN);
 		scenarioPage.txt_description.type("Automation testing");// type in text bo
 		logger.info("Quote description is entered");
-		waitABit(3000);
+		waitABit(2000);
 //		for(int i=0;i<=2;i++)
 //		{
 //		if(!scenarioPage.currencyValue.getText().equals("US Dollars - USD"))

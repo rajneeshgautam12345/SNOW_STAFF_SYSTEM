@@ -64,6 +64,10 @@ public class ScenarioDataPage extends SfaPage {
 	public WebElementFacade btn_sm_addfile;
 	@FindBy(xpath = "//a[contains(.,'Back to Record')]")
 	public WebElementFacade btn_sm_backtorecord;
+	
+	@FindBy(xpath = "//a[text()='Attach A New Global Attachment']")
+	public WebElementFacade btn_attachNewGlobalAttachment;
+	
 	@FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset'][contains(.,'Opportunity Quote')]")
 	public WebElementFacade lbl_oppty_quote;
 	@FindBy(name = "add_global_attachment") // add_add_global_attachment
@@ -125,6 +129,8 @@ public class ScenarioDataPage extends SfaPage {
 	public WebElementFacade ddl_hotcut;
 	
 	
+	//input[@placeholder='Search People...']
+	
 	@FindBy(xpath = "	//a[contains(@data-interactive-lib-uid,'13')]")
 	public WebElementFacade ddl_CCM;
 	@FindBy(xpath = "//input[contains(@placeholder,'Search People...')]")
@@ -133,6 +139,10 @@ public class ScenarioDataPage extends SfaPage {
 //	public WebElementFacade btn_hotcut_save;
 	@FindBy(xpath = "//button[@name='SaveEdit']")
 	public WebElementFacade btn_hotcut_save;
+	
+	@FindBy(xpath = "//button[@aria-label='Quote associated to an OTT service?']")
+	public WebElementFacade ottService;
+	
 	@FindBy(xpath = "//a[contains(@title,'Go to Order Contacts Roles')]")
 	public WebElementFacade lnk_go_to_Contacts;
 	@FindBy(xpath = "//*[@title='Add Existing Contacts']")
@@ -231,7 +241,7 @@ public class ScenarioDataPage extends SfaPage {
 	public WebElementFacade blackhole;
 	@FindBy(xpath = "//div[@data-value='MEDS']")
 	public WebElementFacade meds;
-	@FindBy(xpath = "//button[@title='Move selection to Chosen']")
+	@FindBy(xpath = "(//lightning-button-icon[@variant='container']/button)[1]")
 	public WebElementFacade moveSelectionArrow;
 	
 	@FindBy(xpath = "//label[@for='bfdYes-1']")
@@ -271,6 +281,9 @@ public class ScenarioDataPage extends SfaPage {
 	@FindBy(xpath = "//input[@name='Offnet_UNI_MTU__c']")
 	public WebElementFacade offnetMTU;
 	
+	@FindBy(xpath = "//label[@for='coloSpaceNo-1']")
+	public WebElementFacade colocationSpace;
+	
 	//SDF element
 	@FindBy(xpath = "//th[@data-label='Package ID']//a")
 	public WebElementFacade packageId;
@@ -303,7 +316,7 @@ public class ScenarioDataPage extends SfaPage {
 	@FindBy(xpath = "//button[@type='submit']")
 	public WebElementFacade saveContactSDF;
 	
-	@FindBy(xpath = "(//*[@id='networkStatus-140']/span)[1]")
+	@FindBy(xpath = "//*[contains(@id,'networkStatus')]/span[1]")
 	public WebElementFacade sdfNetworkStatus;
 	@FindBy(xpath = "//button[@title='Close']")
 	public WebElementFacade closeLocalContactWindow;
@@ -342,6 +355,47 @@ public class ScenarioDataPage extends SfaPage {
 	@FindBy(xpath = "//input[@name='Vendor_Name_Z__c']")
 	public WebElementFacade vendorName;
 	
+	@FindBy(xpath = "//*[text()='Billing Account']/../../following-sibling::lightning-icon[1]")
+	public WebElementFacade ban_check;
+	
+	//Managed Route page
+	@FindBy(xpath = "//a[@id='Managed Router Details__item']")
+	public WebElementFacade managedRouterDetails;
+	
+	@FindBy(xpath = "//button[@name='Edit']")
+	public WebElementFacade managedRouterDetailsEdit;
+		
+	@FindBy(xpath = "//button[@name='LAN_Routing_Protocol__c']")  //Static
+	public WebElementFacade lanRoutingProtocol;
+	
+	@FindBy(xpath = "//label[contains(@for,'multipleWANNo')]")
+	public WebElementFacade multipleWANSeries_No;
+	
+	@FindBy(xpath = "//button[@name='Multi_Router_Role__c']")
+	public WebElementFacade multiRouterRole;
+		
+	@FindBy(xpath = "//label[contains(@for,'multipleLANNo')]")
+	public WebElementFacade multipleLANConnection_No;
+	
+	@FindBy(xpath = "//button[@title='OK']")
+	public WebElementFacade saveButton;
+	
+	//RelatedNumber
+	@FindBy(xpath = "//a[@title='The following Related Numbers are required in order to submit your order:  CAT Approval']")
+	public WebElementFacade relatedNumberLink;
+	@FindBy(xpath = "//button[text()='New' and @name='New']")
+	public WebElementFacade newButton;
+	@FindBy(xpath = "//textarea[@part='textarea']")
+	public WebElementFacade comments;
+	@FindBy(xpath = "//input[@name='Detail__c']")
+	public WebElementFacade relatedNumber;
+	
+	@FindBy(xpath = "//button[@aria-label='Type']")
+	public WebElementFacade type;
+	@FindBy(xpath = "//input[@name='CAR_Approval_Status__c']")
+	public WebElementFacade carApprovalStatus;
+	@FindBy(xpath = "//*[@name='SaveEdit']")
+	public WebElementFacade save;
 	
 	@Override
 	public WebElementFacade getUniqueElementInPage() {
